@@ -83,6 +83,16 @@ namespace MonoForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap goBack {
+            get {
+                object obj = ResourceManager.GetObject("goBack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap monopoly_logo {
             get {
                 object obj = ResourceManager.GetObject("monopoly_logo", resourceCulture);

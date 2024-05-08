@@ -9,3 +9,14 @@ C:\Users\Murat Berk\Desktop\Projeler\MonoForms\MonoForms\obj\Debug\MonoForms.csp
 C:\Users\Murat Berk\Desktop\Projeler\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.CoreCompileInputs.cache
 C:\Users\Murat Berk\Desktop\Projeler\MonoForms\MonoForms\obj\Debug\MonoForms.exe
 C:\Users\Murat Berk\Desktop\Projeler\MonoForms\MonoForms\obj\Debug\MonoForms.pdb
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\bin\Debug\MonoForms.exe.config
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\bin\Debug\MonoForms.exe
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\bin\Debug\MonoForms.pdb
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.AssemblyReference.cache
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.Form1.resources
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.GameSettings.resources
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.Properties.Resources.resources
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.GenerateResource.cache
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.CoreCompileInputs.cache
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.exe
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.pdb

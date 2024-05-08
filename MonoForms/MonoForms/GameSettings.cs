@@ -50,6 +50,21 @@ namespace MonoForms
             
             
         }
+
+        private void lblPlayerCount_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStartGame_Click(object sender, EventArgs e)
+        {
+            new MainGame().ShowDialog();
+        }
+
+        private void btnGoBack_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 
     public class NewPlayer : Control

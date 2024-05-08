@@ -58,6 +58,12 @@
     <Compile Include="GameSettings.Designer.cs">
       <DependentUpon>GameSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainGame.Designer.cs">
+      <DependentUpon>MainGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\GameSettings.cs" />
@@ -107,6 +113,7 @@
     <Content Include="Assets\Die\mrMonopoly.jpg" />
     <Content Include="Assets\Die\speedDieBus760.png" />
     <Content Include="Assets\gif3.gif" />
+    <Content Include="Assets\goBack.png" />
     <Content Include="Assets\lowresboard.png" />
     <Content Include="Assets\monopoly_logo.png" />
     <Content Include="Assets\Pawn\boot.png" />
