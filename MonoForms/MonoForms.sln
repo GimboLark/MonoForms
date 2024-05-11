@@ -5,6 +5,10 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoForms", "MonoForms\MonoForms.csproj", "{C433E268-8478-4DF0-869D-F47EA80B1132}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monoforms.Entities", "Monoforms.Entities\Monoforms.Entities.csproj", "{92FD5810-5C82-413B-B1D0-A367FBA749DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monoforms.Business", "Monoforms.Business\Monoforms.Business.csproj", "{54CEE1AE-67C4-4C8F-8564-08E8A1774820}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{C433E268-8478-4DF0-869D-F47EA80B1132}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C433E268-8478-4DF0-869D-F47EA80B1132}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C433E268-8478-4DF0-869D-F47EA80B1132}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92FD5810-5C82-413B-B1D0-A367FBA749DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92FD5810-5C82-413B-B1D0-A367FBA749DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92FD5810-5C82-413B-B1D0-A367FBA749DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92FD5810-5C82-413B-B1D0-A367FBA749DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54CEE1AE-67C4-4C8F-8564-08E8A1774820}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54CEE1AE-67C4-4C8F-8564-08E8A1774820}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54CEE1AE-67C4-4C8F-8564-08E8A1774820}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54CEE1AE-67C4-4C8F-8564-08E8A1774820}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
