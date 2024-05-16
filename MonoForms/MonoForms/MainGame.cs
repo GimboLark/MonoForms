@@ -24,7 +24,7 @@ namespace MonoForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            zar atma butonu
+            //zar atma butonu
             // İki zar için rastgele sayılar üret
             int die1 = random.Next(1, 7); // 1 ile 6 arası rastgele sayı
             int die2 = random.Next(1, 7); // 1 ile 6 arası rastgele sayı
