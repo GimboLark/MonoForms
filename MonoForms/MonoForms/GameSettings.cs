@@ -65,7 +65,7 @@ namespace MonoForms
         private void btnStartGame_Click(object sender, EventArgs e)
         {
             MainGame mainGameForm = new MainGame(startingMoney, currentPlayerCount);
-            mainGameForm().ShowDialog();
+            mainGameForm.ShowDialog();
         }
 
         private void btnGoBack_Click(object sender, EventArgs e)
