@@ -22,6 +22,7 @@ namespace MonoForms
         public NewPlayer[] players;
 
         public int currentPlayerCount;
+        public int startingMoney;
 
         public GameSettings()
         {
@@ -46,8 +47,13 @@ namespace MonoForms
         private void playerCount_SelectedIndexChanged(object sender, EventArgs e)
         {
             // seçilen oyuncu sayısı değiştiğinde
-            currentPlayerCount = (int) playerCount.SelectedItem;
-            
+            if (playerCount.SelectedItem != null)
+            {
+                // Convert.ToInt32 kullanarak seçilen öğeyi int'e dönüştürme
+                currentPlayerCount = Convert.ToInt32(playerCount.SelectedItem);
+                CreatePlayerControls(currentPlayerCount);
+                Console.WriteLine("Seçilen oyuncu sayısı: " + currentPlayerCount);
+            } 
             
         }
 
@@ -58,12 +64,67 @@ namespace MonoForms
 
         private void btnStartGame_Click(object sender, EventArgs e)
         {
-            new MainGame().ShowDialog();
+            MainGame mainGameForm = new MainGame(startingMoney, currentPlayerCount);
+            mainGameForm().ShowDialog();
         }
 
         private void btnGoBack_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            int parsedValue;
+            if (int.TryParse(textBox1.Text, out parsedValue))
+            {
+                startingMoney = parsedValue;
+            }
+            else
+            {
+                // Kullanıcı doğru bir tam sayı girmedikçe bir uyarı mesajı göster
+                MessageBox.Show("Lütfen geçerli bir tam sayı girin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CreatePlayerControls(int currentPlayerCount)
+        {
+            int topMargin = 100; // Formun üst kenarından 100 piksel aşağıdan başlat
+            int rightMargin = this.ClientSize.Width - 250; // Formun sağ kenarından 250 piksel içeriden başlat
+
+            // Mevcut kontrolleri temizle
+            foreach (Control control in this.Controls.OfType<Label>().ToList())
+            {
+                if (control.Text.StartsWith("Oyuncu"))
+                    this.Controls.Remove(control);
+            }
+            foreach (Control control in this.Controls.OfType<TextBox>().ToList())
+            {
+                if (control.Name != "textBox1") // Başlangıç parası girişini silme
+                    this.Controls.Remove(control);
+            }
+            foreach (Control control in this.Controls.OfType<PictureBox>().ToList())
+            {
+                this.Controls.Remove(control);
+            }
+
+
+            for (int i = 1; i <= currentPlayerCount; i++)
+            {
+                // Label oluştur
+                Label lblPlayer = new Label();
+                lblPlayer.Text = "Oyuncu " + i.ToString();
+                lblPlayer.Bounds = new Rectangle(rightMargin, topMargin + (i - 1) * 50, 60, 20);
+                this.Controls.Add(lblPlayer);
+
+                // TextBox oluştur (Oyuncu adı için)
+                TextBox txtPlayerName = new TextBox();
+                txtPlayerName.Bounds = new Rectangle(rightMargin - 120, topMargin + (i - 1) * 50, 100, 20);
+                this.Controls.Add(txtPlayerName);
+
+                // PictureBox oluştur (Resim seçimi için)
+        
+            }
         }
     }
 
