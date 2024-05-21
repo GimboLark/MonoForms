@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Murat Berk\\Documents\\GitHub\\MonoForms\\MonoForms\\Monoforms.Business\\Monoforms.Business.csproj": {}
+    "C:\\Users\\Dell\\Source\\Repos\\MonoForms\\MonoForms\\Monoforms.Business\\Monoforms.Business.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Murat Berk\\Documents\\GitHub\\MonoForms\\MonoForms\\Monoforms.Business\\Monoforms.Business.csproj": {
+    "C:\\Users\\Dell\\Source\\Repos\\MonoForms\\MonoForms\\Monoforms.Business\\Monoforms.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Murat Berk\\Documents\\GitHub\\MonoForms\\MonoForms\\Monoforms.Business\\Monoforms.Business.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\Source\\Repos\\MonoForms\\MonoForms\\Monoforms.Business\\Monoforms.Business.csproj",
         "projectName": "Monoforms.Business",
-        "projectPath": "C:\\Users\\Murat Berk\\Documents\\GitHub\\MonoForms\\MonoForms\\Monoforms.Business\\Monoforms.Business.csproj",
-        "packagesPath": "C:\\Users\\Murat Berk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Murat Berk\\Documents\\GitHub\\MonoForms\\MonoForms\\Monoforms.Business\\obj\\",
+        "projectPath": "C:\\Users\\Dell\\Source\\Repos\\MonoForms\\MonoForms\\Monoforms.Business\\Monoforms.Business.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell\\Source\\Repos\\MonoForms\\MonoForms\\Monoforms.Business\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Murat Berk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

@@ -126,6 +126,11 @@ namespace MonoForms
         
             }
         }
+
+        private void GameSettings_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class NewPlayer : Control

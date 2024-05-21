@@ -73,6 +73,9 @@
     <EmbeddedResource Include="GameSettings.resx">
       <DependentUpon>GameSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainGame.resx">
+      <DependentUpon>MainGame.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
