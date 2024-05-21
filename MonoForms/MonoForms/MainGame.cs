@@ -70,7 +70,7 @@ namespace MonoForms
             int die1 = random.Next(1, 7); // 1 ile 6 arası rastgele sayı
             int die2 = random.Next(1, 7); // 1 ile 6 arası rastgele sayı
 
-            // Zarların resimlerini ayarla (Resimlerin doğru yolda olduğunu varsayıyoruz)
+            // Zarların resimlerini ayarlar
             pictureBoxZar1.Image = Image.FromFile($"D:/görsel programlama/MonoForms/MonoForms/MonoForms/Assets/Die/die{die1}.jpg");
             pictureBoxZar2.Image = Image.FromFile($"D:/görsel programlama/MonoForms/MonoForms/MonoForms/Assets/Die/die{die2}.jpg");
 
