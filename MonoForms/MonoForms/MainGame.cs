@@ -1,46 +1,48 @@
-﻿using System;
+﻿using MonoForms.FormObjects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MonoForms.Utils;
 
 namespace MonoForms
 {
     public partial class MainGame : Form
     {
-        private int startingMoney;
-        private int playerCount;
-        private Random random = new Random();
-        public MainGame(int startingMoney, int playerCount)
+        private Form previousForm;
+        GameController gc;
+        public MainGame(Form previousForm)
         {
             InitializeComponent();
-            this.startingMoney = startingMoney;
-            this.playerCount = playerCount;
+            this.previousForm = previousForm;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void MainGame_Load(object sender, EventArgs e)
         {
-            //zar atma butonu
-            // İki zar için rastgele sayılar üret
-            int die1 = random.Next(1, 7); // 1 ile 6 arası rastgele sayı
-            int die2 = random.Next(1, 7); // 1 ile 6 arası rastgele sayı
+            this.Width = Globals.APP_WIDTH;
+            this.Height = Globals.APP_HEIGHT + 40;// + 40 burda yukardaki isim kısmı ve kapatma falan şeylerini dahil ettiği için
 
-            pictureBox2.Image = Image.FromFile($"D:/görsel programlama/MonoForms/MonoForms/MonoForms/Assets/Die/die{die1}.jpg"); // Bilgisayarımdaki dosya yolları bozuk olduğu için kendi bilgisayarımda çalışan halini ekledim.
-            pictureBox3.Image = Image.FromFile($"D:/görsel programlama/MonoForms/MonoForms/MonoForms/Assets/Die/die{die2}.jpg");
+            // game controller oluşturulur tüm işlemler burada oluşacak
+            gc = new GameController();
+            gc.Bounds = new Rectangle(0, 0, Globals.APP_WIDTH, Globals.APP_HEIGHT);
+            this.Controls.Add(gc);
+            gc.closeGame.Click += new EventHandler(closeGameEvent);
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void closeGameEvent(object sender, EventArgs e)
         {
-            //zar1 için pb
-        }
+            // Form2'yi aç
+            Form1 form2 = new Form1();
+            form2.Show();
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            //zar2 için pb
+            // Form1'i gizle
+            this.Hide();
         }
     }
 }

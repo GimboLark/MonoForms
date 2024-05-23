@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +55,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormObjects\Dice.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormObjects\GameController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormObjects\PlayerPawn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormObjects\PlayerScreen.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GameSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,12 +81,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\GameSettings.cs" />
+    <Compile Include="Utils\Card.cs" />
+    <Compile Include="Utils\Globals.cs" />
+    <Compile Include="Utils\Player.cs" />
+    <Compile Include="Utils\Utils.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameSettings.resx">
       <DependentUpon>GameSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainGame.resx">
+      <DependentUpon>MainGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -83,6 +104,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Data\Community.json" />
+    <None Include="Data\Property.json" />
+    <None Include="Data\Luck.json" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,6 +128,7 @@
     <Content Include="Assets\background2.jpg" />
     <Content Include="Assets\background3.png" />
     <Content Include="Assets\bankruptgif.gif" />
+    <Content Include="Assets\board.jpg" />
     <Content Include="Assets\Die\die1.jpg" />
     <Content Include="Assets\Die\die2.jpg" />
     <Content Include="Assets\Die\die3.jpg" />
@@ -116,12 +142,12 @@
     <Content Include="Assets\goBack.png" />
     <Content Include="Assets\lowresboard.png" />
     <Content Include="Assets\monopoly_logo.png" />
-    <Content Include="Assets\Pawn\boot.png" />
-    <Content Include="Assets\Pawn\car.png" />
-    <Content Include="Assets\Pawn\hat.png" />
-    <Content Include="Assets\Pawn\iron.png" />
-    <Content Include="Assets\Pawn\rende.png" />
-    <Content Include="Assets\Pawn\ship.png" />
+    <Content Include="Assets\Pawn\Ayakkabı.png" />
+    <Content Include="Assets\Pawn\Araba.png" />
+    <Content Include="Assets\Pawn\Şapka.png" />
+    <Content Include="Assets\Pawn\Ütü.png" />
+    <Content Include="Assets\Pawn\Rende.png" />
+    <Content Include="Assets\Pawn\Gemi.png" />
     <Content Include="Assets\ultimate_monopoly.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

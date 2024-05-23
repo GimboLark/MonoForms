@@ -16,6 +16,7 @@ namespace MonoForms
 
     partial class GameSettings : Form
     {
+        private Form previousForm;
         public Bitmap[] imageBitmaps;
         public bool[] imageAvailability;
 
@@ -24,24 +25,26 @@ namespace MonoForms
         public int currentPlayerCount;
         public int startingMoney;
 
-        public GameSettings()
+        public GameSettings(Form previousForm)
         {
-            InitializeComponent(); 
+            InitializeComponent();
 
-            imageBitmaps = new Bitmap[6];
-            imageAvailability = new bool[] {true,true,true,true,true,true};
+            //imageBitmaps = new Bitmap[6];
+            //imageAvailability = new bool[] {true,true,true,true,true,true};
 
-            currentPlayerCount = 0;
-            /*
-            imageBitmaps[0] = new Bitmap("linktoimage");
-            imageBitmaps[1] = new Bitmap("linktoimage");
-            imageBitmaps[2] = new Bitmap("linktoimage");
-            imageBitmaps[3] = new Bitmap("linktoimage");
-            imageBitmaps[4] = new Bitmap("linktoimage");
-            imageBitmaps[5] = new Bitmap("linktoimage");
-            */
+            //currentPlayerCount = 0;
+            ///*
+            //imageBitmaps[0] = new Bitmap("linktoimage");
+            //imageBitmaps[1] = new Bitmap("linktoimage");
+            //imageBitmaps[2] = new Bitmap("linktoimage");
+            //imageBitmaps[3] = new Bitmap("linktoimage");
+            //imageBitmaps[4] = new Bitmap("linktoimage");
+            //imageBitmaps[5] = new Bitmap("linktoimage");
+            //*/
 
-            // 
+            //// 
+            ///private Form previousForm;
+            this.previousForm = previousForm;
         }
 
         private void playerCount_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,13 +67,21 @@ namespace MonoForms
 
         private void btnStartGame_Click(object sender, EventArgs e)
         {
-            MainGame mainGameForm = new MainGame(startingMoney, currentPlayerCount);
-            mainGameForm.ShowDialog();
+            // Form2'yi aç
+            MainGame form2 = new MainGame(this);
+            form2.Show();
+
+            // Form1'i gizle
+            this.Hide();
         }
 
         private void btnGoBack_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Form1 form2 = new Form1();
+            form2.Show();
+
+            // Form1'i gizle
+            this.Hide();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -89,8 +100,14 @@ namespace MonoForms
 
         private void CreatePlayerControls(int currentPlayerCount)
         {
+            List<string> pawns = new List<string> { "Ayakkabı","Araba","Şapka","Ütü","Rende","Gemi" };
             int topMargin = 100; // Formun üst kenarından 100 piksel aşağıdan başlat
-            int rightMargin = this.ClientSize.Width - 250; // Formun sağ kenarından 250 piksel içeriden başlat
+            int rightMargin = this.ClientSize.Width - 350; // Formun sağ kenarından 250 piksel içeriden başlat
+
+            Label pawnType = new Label();
+            pawnType.Text = "Piyon Seçiniz";
+            pawnType.Bounds = new Rectangle(rightMargin + 250,topMargin -25,80,20);
+            this.Controls.Add(pawnType);
 
             // Mevcut kontrolleri temizle
             foreach (Control control in this.Controls.OfType<Label>().ToList())
@@ -101,6 +118,11 @@ namespace MonoForms
             foreach (Control control in this.Controls.OfType<TextBox>().ToList())
             {
                 if (control.Name != "textBox1") // Başlangıç parası girişini silme
+                    this.Controls.Remove(control);
+            }
+            foreach (Control control in this.Controls.OfType<ComboBox>().ToList())
+            {
+                if (control.Name != "playerCount")
                     this.Controls.Remove(control);
             }
             foreach (Control control in this.Controls.OfType<PictureBox>().ToList())
@@ -119,12 +141,40 @@ namespace MonoForms
 
                 // TextBox oluştur (Oyuncu adı için)
                 TextBox txtPlayerName = new TextBox();
-                txtPlayerName.Bounds = new Rectangle(rightMargin - 120, topMargin + (i - 1) * 50, 100, 20);
+                txtPlayerName.Bounds = new Rectangle(rightMargin + 70, topMargin + (i - 1) * 50, 100, 20);
                 this.Controls.Add(txtPlayerName);
 
+                // Combobox oluştur (Resim seçimi için)
+                ComboBox cbxPawn = new ComboBox();
+                cbxPawn.Bounds = new Rectangle(rightMargin + 200, topMargin + (i - 1) * 50, 75, 20);
+                cbxPawn.DataSource = new List<string>(pawns);
+                cbxPawn.SelectedIndexChanged += (sender, e) => UpdatePawnImage(cbxPawn, i);
+                this.Controls.Add(cbxPawn);
+
                 // PictureBox oluştur (Resim seçimi için)
-        
+                PictureBox pcBox = new PictureBox();
+                pcBox.Bounds = new Rectangle(rightMargin + 300, topMargin + (i - 1) * 50, 30, 30);
+                pcBox.BackgroundImage = Image.FromFile($"../../Assets/Pawn/Ayakkabı.png");
+                pcBox.BackgroundImageLayout = ImageLayout.Stretch;
+                this.Controls.Add(pcBox);
             }
+        }
+
+        private void UpdatePawnImage(ComboBox cbxPawn, int playerIndex)
+        {
+            string selectedPawn = cbxPawn.SelectedItem.ToString();
+            string imagePath = $"../../Assets/Pawn/{selectedPawn}.png";
+            PictureBox pcBox = this.Controls.OfType<PictureBox>().FirstOrDefault(p => p.Name == "pictureBox" + playerIndex);
+
+            if (pcBox != null)
+            {
+                pcBox.BackgroundImage = Image.FromFile(imagePath);
+            }
+        }
+
+        private void GameSettings_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

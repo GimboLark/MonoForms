@@ -129,6 +129,7 @@
             this.Controls.Add(this.playerCount);
             this.Name = "GameSettings";
             this.Text = "GameSettings";
+            this.Load += new System.EventHandler(this.GameSettings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
