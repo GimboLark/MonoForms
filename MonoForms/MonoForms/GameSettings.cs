@@ -100,75 +100,84 @@ namespace MonoForms
 
         private void CreatePlayerControls(int currentPlayerCount)
         {
-            List<string> pawns = new List<string> { "Ayakkabı","Araba","Şapka","Ütü","Rende","Gemi" };
-            int topMargin = 100; // Formun üst kenarından 100 piksel aşağıdan başlat
-            int rightMargin = this.ClientSize.Width - 350; // Formun sağ kenarından 250 piksel içeriden başlat
+            List<string> pawns = new List<string> { "Ayakkabı", "Araba", "Şapka", "Ütü", "Rende", "Gemi" };
+            int topMargin = 100;
+            int rightMargin = this.ClientSize.Width - 350;
 
-            Label pawnType = new Label();
-            pawnType.Text = "Piyon Seçiniz";
-            pawnType.Bounds = new Rectangle(rightMargin + 250,topMargin -25,80,20);
+            Label pawnType = new Label
+            {
+                Text = "Piyon Seçiniz",
+                Bounds = new Rectangle(rightMargin + 250, topMargin - 25, 80, 20)
+            };
             this.Controls.Add(pawnType);
 
-            // Mevcut kontrolleri temizle
-            foreach (Control control in this.Controls.OfType<Label>().ToList())
-            {
-                if (control.Text.StartsWith("Oyuncu"))
-                    this.Controls.Remove(control);
-            }
-            foreach (Control control in this.Controls.OfType<TextBox>().ToList())
-            {
-                if (control.Name != "textBox1") // Başlangıç parası girişini silme
-                    this.Controls.Remove(control);
-            }
-            foreach (Control control in this.Controls.OfType<ComboBox>().ToList())
-            {
-                if (control.Name != "playerCount")
-                    this.Controls.Remove(control);
-            }
-            foreach (Control control in this.Controls.OfType<PictureBox>().ToList())
-            {
-                this.Controls.Remove(control);
-            }
-
+            ClearExistingControls();
 
             for (int i = 1; i <= currentPlayerCount; i++)
             {
-                // Label oluştur
-                Label lblPlayer = new Label();
-                lblPlayer.Text = "Oyuncu " + i.ToString();
-                lblPlayer.Bounds = new Rectangle(rightMargin, topMargin + (i - 1) * 50, 60, 20);
-                this.Controls.Add(lblPlayer);
-
-                // TextBox oluştur (Oyuncu adı için)
-                TextBox txtPlayerName = new TextBox();
-                txtPlayerName.Bounds = new Rectangle(rightMargin + 70, topMargin + (i - 1) * 50, 100, 20);
-                this.Controls.Add(txtPlayerName);
-
-                // Combobox oluştur (Resim seçimi için)
-                ComboBox cbxPawn = new ComboBox();
-                cbxPawn.Bounds = new Rectangle(rightMargin + 200, topMargin + (i - 1) * 50, 75, 20);
-                cbxPawn.DataSource = new List<string>(pawns);
-                cbxPawn.SelectedIndexChanged += (sender, e) => UpdatePawnImage(cbxPawn, i);
-                this.Controls.Add(cbxPawn);
-
-                // PictureBox oluştur (Resim seçimi için)
-                PictureBox pcBox = new PictureBox();
-                pcBox.Bounds = new Rectangle(rightMargin + 300, topMargin + (i - 1) * 50, 30, 30);
-                pcBox.BackgroundImage = Image.FromFile($"../../Assets/Pawn/Ayakkabı.png");
-                pcBox.BackgroundImageLayout = ImageLayout.Stretch;
-                this.Controls.Add(pcBox);
+                AddPlayerControls(i, rightMargin, topMargin, pawns);
             }
+        }
+
+        private void ClearExistingControls()
+        {
+            var controlsToRemove = this.Controls.OfType<Control>()
+                .Where(c => c is Label lbl && lbl.Text.StartsWith("Oyuncu") ||
+                            c is TextBox txt && txt.Name != "textBox1" ||
+                            c is ComboBox cbx && cbx.Name != "playerCount" ||
+                            c is PictureBox)
+                .ToList();
+
+            foreach (var control in controlsToRemove)
+            {
+                this.Controls.Remove(control);
+            }
+        }
+
+        private void AddPlayerControls(int playerIndex, int rightMargin, int topMargin, List<string> pawns)
+        {
+            Label lblPlayer = new Label
+            {
+                Text = "Oyuncu " + playerIndex,
+                Bounds = new Rectangle(rightMargin, topMargin + (playerIndex - 1) * 50, 60, 20)
+            };
+            this.Controls.Add(lblPlayer);
+
+            TextBox txtPlayerName = new TextBox
+            {
+                Bounds = new Rectangle(rightMargin + 70, topMargin + (playerIndex - 1) * 50, 100, 20)
+            };
+            this.Controls.Add(txtPlayerName);
+
+            ComboBox cbxPawn = new ComboBox
+            {
+                Bounds = new Rectangle(rightMargin + 200, topMargin + (playerIndex - 1) * 50, 75, 20),
+                DataSource = new List<string>(pawns),
+                Name = "comboBox" + playerIndex
+            };
+            cbxPawn.SelectedIndexChanged += (sender, e) => UpdatePawnImage(cbxPawn, playerIndex);
+            this.Controls.Add(cbxPawn);
+
+            PictureBox pcBox = new PictureBox
+            {
+                Name = "pictureBox" + playerIndex,
+                Bounds = new Rectangle(rightMargin + 300, topMargin + (playerIndex - 1) * 50, 30, 30),
+                BackgroundImage = Image.FromFile($"../../Assets/Pawn/Ayakkabı.png"),
+                BackgroundImageLayout = ImageLayout.Stretch
+            };
+            this.Controls.Add(pcBox);
         }
 
         private void UpdatePawnImage(ComboBox cbxPawn, int playerIndex)
         {
             string selectedPawn = cbxPawn.SelectedItem.ToString();
             string imagePath = $"../../Assets/Pawn/{selectedPawn}.png";
-            PictureBox pcBox = this.Controls.OfType<PictureBox>().FirstOrDefault(p => p.Name == "pictureBox" + playerIndex);
+            PictureBox pcBox = this.Controls.OfType<PictureBox>().FirstOrDefault(p => p.Name == $"pictureBox{playerIndex}");
 
             if (pcBox != null)
             {
                 pcBox.BackgroundImage = Image.FromFile(imagePath);
+                pcBox.Refresh(); 
             }
         }
 
