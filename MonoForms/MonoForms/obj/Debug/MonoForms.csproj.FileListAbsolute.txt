@@ -24,3 +24,18 @@ C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\Mon
 C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.CopyComplete
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\bin\Debug\MonoForms.exe.config
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\bin\Debug\MonoForms.exe
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\bin\Debug\MonoForms.pdb
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.AssemblyReference.cache
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.Form1.resources
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.GameSettings.resources
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.MainGame.resources
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.Properties.Resources.resources
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.GenerateResource.cache
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.CopyComplete
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.exe
+C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.pdb

@@ -122,6 +122,20 @@ namespace MonoForms.FormObjects
             }
         }
 
+        public void NextRound_Click(object sender, EventArgs e)
+        {
+            if (SonrakiTuraGecilebilir)
+            {
+                sıra = (sıra + 1) % pawns.Length;
+                SonrakiTuraGecilebilir = false;
+                nextRound.BackColor = DefaultBackColor;
+            }
+            else
+            {
+                MessageBox.Show("Bir sonraki tura geçebilmek için hamleni yapman lazım");
+            }
+        }
+
         // updates pawns positions
         public void PawnUpdate()
         {

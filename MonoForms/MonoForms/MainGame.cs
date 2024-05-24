@@ -17,6 +17,7 @@ namespace MonoForms
     {
         private Form previousForm;
         GameController gc;
+        Dice dice;
         public MainGame(Form previousForm)
         {
             InitializeComponent();
@@ -33,6 +34,12 @@ namespace MonoForms
             gc.Bounds = new Rectangle(0, 0, Globals.APP_WIDTH, Globals.APP_HEIGHT);
             this.Controls.Add(gc);
             gc.closeGame.Click += new EventHandler(closeGameEvent);
+
+            //Dice eklendi
+            dice = new Dice(gc);
+            dice.Bounds = new Rectangle(Globals.APP_WIDTH - 220, Globals.APP_HEIGHT - 140, 220, 140);
+            this.Controls.Add(dice);
+            //ekranda göstermeyi beceremedim sonra ilgilenilir
         }
 
         private void closeGameEvent(object sender, EventArgs e)
