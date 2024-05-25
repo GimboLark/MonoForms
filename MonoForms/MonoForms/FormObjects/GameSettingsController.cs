@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace MonoForms.FormObjects
 {
@@ -14,10 +15,12 @@ namespace MonoForms.FormObjects
         public Button goBack;
         public Button startGame;
 
-        public Label playerCount;
+        public Label playerCountlbl;
         public Label startMoney;
+        public Label gameSettingsLbl;
 
         public TextBox startMoneyTxt;
+        public ComboBox playerCountCbx;
 
         Form1 form1;
         GameSettings gameSettings;
@@ -45,6 +48,58 @@ namespace MonoForms.FormObjects
             startGame.Bounds = new Rectangle(220, 300, 155, 50);
             startGame.Click += new EventHandler(startGameClick);
             this.Controls.Add(startGame);
+
+            //Initialize startMoneyTxt TextBox
+            startMoneyTxt = new TextBox();
+            startMoneyTxt.Name = "startMoneyTxt";
+            startMoneyTxt.Text = "1500";
+            startMoneyTxt.Bounds = new Rectangle(130,170,90,40);
+            this.Controls.Add(startMoneyTxt);
+
+            //Initialize startMoney label
+            startMoney = new Label();
+            startMoney.Text = "Başlangıç Parası";
+            startMoney.Bounds = new Rectangle(20, 170, 100, 25);
+            startMoney.Font = new Font(startMoney.Font.FontFamily, 8f, FontStyle.Regular);
+            startMoney.TextAlign = ContentAlignment.MiddleCenter;
+            this.Controls.Add(startMoney);
+
+            //Initialize playerCount label
+            playerCountlbl = new Label();
+            playerCountlbl.Text = "Oyuncu Sayısı";
+            playerCountlbl.Name = "playerCount";
+            playerCountlbl.Bounds = new Rectangle(20, 130, 100, 25);
+            playerCountlbl.Font = new Font(playerCountlbl.Font.FontFamily, 8f, FontStyle.Regular);
+            playerCountlbl.TextAlign = ContentAlignment.MiddleCenter;
+            this.Controls.Add(playerCountlbl);
+
+            //Initialize gameSettings label
+            gameSettingsLbl = new Label();
+            gameSettingsLbl.Text = "Ayarlar";
+            gameSettingsLbl.Name = "Settings";
+            gameSettingsLbl.Bounds = new Rectangle(230, 20, 100, 25);
+            gameSettingsLbl.Font = new Font(gameSettingsLbl.Font.FontFamily, 12f, FontStyle.Bold);
+            gameSettingsLbl.TextAlign = ContentAlignment.MiddleCenter;
+            this.Controls.Add(gameSettingsLbl);
+
+            //Initialize playerCountCbx Cbx
+            playerCountCbx = new ComboBox();
+            playerCountCbx.Bounds = new Rectangle(130, 135, 90, 40);
+            playerCountCbx.DataSource = playerCountList;
+            playerCountCbx.Name = "playerCount";
+            playerCountCbx.SelectedIndexChanged += new EventHandler(playerCountChanged);
+            this.Controls.Add(playerCountCbx);
+        }
+
+        private void playerCountChanged(object sender, EventArgs e)
+        {
+            // seçilen oyuncu sayısı değiştiğinde
+            if (playerCountCbx.SelectedItem != null)
+            {
+                // Convert.ToInt32 kullanarak seçilen öğeyi int'e dönüştürme
+                int currentPlayerCount = Convert.ToInt32(playerCountCbx.SelectedItem);
+                CreatePlayerControls(currentPlayerCount);
+            }
         }
 
         private void goBackClick(object sender, EventArgs e)
@@ -57,8 +112,8 @@ namespace MonoForms.FormObjects
         public void ClearExistingControls()
         {
             var controlsToRemove = this.Controls.OfType<Control>()
-                .Where(c => c is Label lbl && lbl.Text.StartsWith("Oyuncu") ||
-                            c is TextBox txt && txt.Name != "textBox1" ||
+                .Where(c => c is Label lbl && lbl.Text.StartsWith("Oyuncu") && lbl.Name != "playerCount" ||
+                            c is TextBox txt && txt.Name != "startMoneyTxt" ||
                             c is ComboBox cbx && cbx.Name != "playerCount" ||
                             c is PictureBox)
                 .ToList();
@@ -116,11 +171,13 @@ namespace MonoForms.FormObjects
                 DataSource = new List<string>(pawns),
                 Name = "comboBox" + playerIndex
             };
+            
             cbxPawn.SelectedIndexChanged += (sender, e) => {
                 playerPawns.Add(cbxPawn.SelectedValue.ToString());
                 UpdatePawnImage(cbxPawn, playerIndex);
             };
             this.Controls.Add(cbxPawn);
+            cbxPawn.SelectedIndex = 0;
             PictureBox pcBox = new PictureBox
             {
                 Name = "pictureBox" + playerIndex,
@@ -132,23 +189,36 @@ namespace MonoForms.FormObjects
         }
         public void startGameClick(object sender, EventArgs e)
         {
-            int playerCount = Globals.PlayerCount;
-            Globals.Players = new Player[playerCount];
-
-            for (int i = 0; i < playerCount; i++)
+            try
             {
-                Player player = new Player(playerNames[i], playerPawns[i],i);
-                Globals.Players[i] = player;
+                int playerCount = Globals.PlayerCount;
+                if (playerNames.Count == playerCount && playerPawns.Count == playerCount && playerCount != 0)
+                {
+                    int startMoney = Convert.ToInt32(startMoneyTxt.Text);
+                    Globals.STARTING_MONEY = startMoney;
+                    Globals.Players = new Player[playerCount];
+
+
+                    for (int i = 0; i < playerCount; i++)
+                    {
+                        Player player = new Player(playerNames[i], playerPawns[i], i);
+                        Globals.Players[i] = player;
+                    }
+                    gameSettings = new GameSettings(form1);
+                    MainGame mainGame = new MainGame(gameSettings);
+                    mainGame.Show();
+
+                    gameSettings.Hide();
+                }
             }
-
-            gameSettings = new GameSettings(form1);
-            MainGame mainGame = new MainGame(gameSettings);
-            mainGame.Show();
-
-            gameSettings.Close();
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
         public void UpdatePawnImage(ComboBox cbxPawn, int playerIndex)
-        {
+        { 
             string selectedPawn = cbxPawn.SelectedItem.ToString();
             string imagePath = $"../../Assets/Pawn/{selectedPawn}.png";
             PictureBox pcBox = this.Controls.OfType<PictureBox>().FirstOrDefault(p => p.Name == $"pictureBox{playerIndex}");

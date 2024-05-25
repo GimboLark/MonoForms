@@ -2,6 +2,9 @@
 using System.Drawing;
 using MonoForms.Utils;
 using System;
+using System.IO;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace MonoForms.FormObjects
 {
@@ -76,7 +79,14 @@ namespace MonoForms.FormObjects
 
             Player[] players = new Player[] { player1, player2, player3, player4 };
 
-            if (Globals.Players == null || Globals.PlayerCount != Globals.Players.Length)
+            /*
+            Console.WriteLine(Globals.Players == null);
+            Console.WriteLine(Globals.PlayerCount);
+            Console.WriteLine(Globals.Players.Length);
+             */
+
+
+            if (Globals.Players == null || Globals.PlayerCount != Globals.Players.Length || Globals.PlayerCount == 0 || Globals.Players.Length == 0)
             {
                 Globals.Players = players;
                 Globals.PlayerCount = 4;
@@ -146,18 +156,12 @@ namespace MonoForms.FormObjects
         {
             Console.WriteLine("NEXT ROUND");
 
-            if (SonrakiTuraGecilebilir)
-            {
-                Console.WriteLine("SIRA {0}", (turn + 1) % 4 + 1);
+            Console.WriteLine("SIRA {0}", (turn + 1) % 4 + 1);
 
-                turn = (turn + 1) % 4;
-                //SonrakiTuraGecilebilir = false;
-                //nextRound.BackColor = DefaultBackColor;
-            }
-            else
-            {
-                //MessageBox.Show("Bir sonraki tura geçebilmek için hamleni yapman lazım");
-            }
+            turn = (turn + 1) % 4;
+
+            nextRound.Enabled = false;
+            nextRound.BackColor = Color.DimGray;
         }
 
         // updates pawns positions
@@ -230,56 +234,184 @@ namespace MonoForms.FormObjects
 
         }
 
+        public void HandleLuck()
+        {
+
+        }
+
+        public void HandleComm()
+        {
+
+        }
+
+        public void HandleGoToJail()
+        {
+
+        }
+
+        public void EndRound()
+        {
+
+        }
+
+        public bool HandleMoney()
+        {
+            return false;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void PlayerLostHandle()
+        {
+
+        }
+
+        /// <summary>
+        /// Ana Update Fonksiyonu tüm durumları içerir
+        /// </summary>
         public void UpdateGameState()
         {
             int previousPosition = Globals.Players[turn].previousPosition;
             int currentPosition = Globals.Players[turn].position;
 
-            // check eligibility for pass money
+            // 3 tekrarlı roll durumu
+            if (Globals.Players[turn].HasConsecutiveSameRolls)
+            {
+                // same as goto jail
+                HandleGoToJail();
+                EndRound();
+                return;
+            }
 
-            if (true)
+            // check eligibility for pass money
+            if (currentPosition < previousPosition)
             {
                 // give money
+                Globals.Players[turn].money += Globals.PASS_MONEY_GAIN;
                 // update visuals
+                playerScreen.Update(turn);
             }
-            else
-            {
-                // do nothing
-            }
+
+
+
 
             // check current position
-            if(true) //if 0, 10, 20 do nothing, baş,ziyaret,park
-            {
+            List<int> p_doNothing = new List<int>   {  0, 10, 20 };
+            List<int> p_jail = new List<int>        { 30         };
+            List<int> p_tax = new List<int>         {  4, 38     };
+            List<int> p_luck = new List<int>        {  7, 22, 36 };
+            List<int> p_comm = new List<int>        {  2, 17, 33 };
 
+
+            bool currentPlayerLost = false;
+
+
+            if (p_doNothing.Contains(currentPosition)) //if 0, 10, 20 do nothing, baş,ziyaret,park
+            {
+                SonrakiTuraGecilebilir = true;
             }
-            else if (true) // if 30 kodes
+            else if (p_jail.Contains(currentPosition)) // if 30 kodes
             {
-
+                // same as goto jail
+                HandleGoToJail();
+                EndRound();
+                return;
             }
-            else if(true) // if 4 , 38 tax
+            else if(p_tax.Contains(currentPosition)) // if 4 , 38 tax
             {
-
-            }
-            else if(true) // if kamu 2, 17, 33 ; şans 7, 22, 36
-            {
-                if(true) // kamu
-                {
-
+                // handle tax
+                if(currentPosition == 4)  // gelir vergisi
+                { 
+                    if(Globals.Players[turn].money - Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN > 0) // yeterli para varsa
+                    {
+                        Globals.Players[turn].money -= Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN;
+                    }
+                    else // yeterli para yoksa
+                    {
+                        currentPlayerLost = HandleMoney();
+                    }
                 }
-                else // şans
+                else    // lüküs vergisi
                 {
-
+                    if (Globals.Players[turn].money - Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN / 2 > 0) // yeterli para varsa
+                    {
+                        Globals.Players[turn].money -= Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN / 2;
+                    }
+                    else // yeterli para yoksa
+                    {
+                        currentPlayerLost = HandleMoney();
+                    }
                 }
+
+            }
+            else if(p_luck.Contains(currentPosition))
+            {
+                HandleLuck();
+            }
+            else if (p_comm.Contains(currentPosition))
+            {
+                HandleComm();
             }
             else // satın alınabilir değerler
             {
-                
+                Property currentProperty = Globals.Properties[currentPosition];
+
+                // owned by current
+                if (Globals.Players[turn].ownedProperties[currentPosition])
+                {
+                    bool upgradable = false;
+                    //checks upgradability
+
+                    if(upgradable)
+                    {
+                        // upgrade menu
+                    }
+                    else
+                    {
+                        // do nothing
+                    }
+                }
+                else
+                {
+
+                    bool somebodyOwns = false;
+
+                    for(int i = 0; i < Globals.PlayerCount; i++)
+                        if (i != turn)
+                            if (Globals.Players[i].ownedProperties[currentPosition])
+                                somebodyOwns = true;
+
+                    if(somebodyOwns) 
+                    {
+                        // open pay menu
+                    }
+                    else // not owned
+                    {
+                        // open buy menu
+                    }
+                }
             }
 
-            SonrakiTuraGecilebilir = true;
+            if(currentPlayerLost)
+            {
+                PlayerLostHandle();
+            }
 
             // update next round button , enable it
-        }
-    }
 
+            nextRound.Enabled = true;
+            nextRound.BackColor = Color.MediumSpringGreen;
+
+        }
+
+        public Luck RandomLuck()
+        {
+            
+
+            return new Luck();
+        }
+        
+    }
 }

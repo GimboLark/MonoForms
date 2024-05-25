@@ -59,8 +59,13 @@ namespace MonoForms.FormObjects
 
             int totalRollResult = rollResult1 + rollResult2;
 
-            Console.WriteLine("ZAR SONUCU:  {0}",totalRollResult);
+            // zarı atan playera rollu kaydeder
+            Globals.Players[parentController.turn].NewRoll((rollResult1, rollResult2));
+
+            //Console.WriteLine("ZAR SONUCU:  {0}",totalRollResult);
+            
             parentController.timer1.Start();
+            // zar sonucuna göre güncellemek için gameController update fonk çağrılır
             parentController.UpdatePlayerPosition(totalRollResult);
         }
 

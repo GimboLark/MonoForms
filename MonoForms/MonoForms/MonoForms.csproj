@@ -58,6 +58,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormObjects\BuyMenu.cs" />
     <Compile Include="FormObjects\Dice.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -73,6 +74,7 @@
     <Compile Include="FormObjects\PlayerScreen.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FormObjects\UpgradeMenu.cs" />
     <Compile Include="GameSettings.cs">
       <SubType>Form</SubType>
     </Compile>

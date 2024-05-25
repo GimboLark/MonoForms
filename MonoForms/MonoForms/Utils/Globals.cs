@@ -20,6 +20,8 @@ namespace MonoForms.Utils
         public const string COMMUNITY_PATH = "../../Data/Community.json";
 
         public static int STARTING_MONEY = 1500;
+        public static int PASS_MONEY_GAIN = 200;
+        public static int TAX_DIFFICULTY = 1;
 
         public static readonly (int, int)[] positions = new (int, int)[]
         {
@@ -91,11 +93,22 @@ namespace MonoForms.Utils
             (  5, 15),
         };
 
+        public static readonly bool[] propertyMapBool = new bool[]
+        {
+            false, true ,false, true,  false, true, true,  false, true,  true,
+            false, true ,true,  true,  true,  true, true,  false, true,  true,
+            false, true ,false, true,  true,  true, true,  true,  true,  true,
+            false, true ,true,  false, true,  true, false, true,  false, true
+        };
+
 
         // updates when init
         public static Property[] Properties;
         public static Luck[] Lucks;
         public static Community[] Communities;
+
+        public static Queue<Luck> LuckQueue;
+        public static Queue<Community> CommunityQueue;
 
         // updates from game settings
         public static int PlayerCount;
@@ -107,9 +120,30 @@ namespace MonoForms.Utils
             LuckCards lc = LuckCards.FromJsonFile(LUCK_PATH);
             CommunityCards cc = CommunityCards.FromJsonFile(COMMUNITY_PATH);
 
-            Properties = pc.properties;
             Lucks = lc.lucks;
             Communities = cc.communities;
+
+            //Lucklar enqueue edilmeden önce Luck listesi burada karılır
+            Lucks = Lucks.OrderBy(x => Guid.NewGuid()).ToArray();
+
+            foreach(Luck luck in Lucks)
+                LuckQueue.Enqueue(luck);
+
+            foreach(Community community in Communities)
+                CommunityQueue.Enqueue(community);
+
+            Properties = new Property[40];
+
+            // propertyler içine koyulacak tam düzgün
+            for(int i = 0, j = 0; i < 40; i++)
+            {
+                if (propertyMapBool[i])
+                {
+                    Properties[i] = pc.properties[j++];
+                }
+            }
+            
+
         }
 
         public static void SettingsUpdate(int playerCount, Player[] players)

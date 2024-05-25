@@ -18,11 +18,13 @@ namespace MonoForms.Utils
         public int money;
         public bool[] ownedProperties;
         public bool hasEscapeFromJailCard;
+        public int jailCounter;
 
         public int previousPosition;
         public int position;
 
         // diğer değerler
+        public RollCache rollCache;
 
         public Player(string name, string imageName, int turn)
         {
@@ -30,10 +32,52 @@ namespace MonoForms.Utils
             this.imageName = imageName;
             this.turn = turn;
 
-            money = 1500;
+            money = Globals.STARTING_MONEY;
             position = 0;
+            jailCounter = 0;
 
             ownedProperties = new bool[40];
+
+            rollCache = new RollCache();
+
+        }
+
+        public bool HasConsecutiveSameRolls
+        {
+            get { return rollCache.HasConsecutiveSameRolls; }
+        }
+
+        public void NewRoll((int, int) roll)
+        {
+            rollCache.NewRoll(roll);
+        }
+
+        public class RollCache
+        {
+            public (int, int)[] array = new (int,int)[3];
+            public int index = 0;
+
+            public void NewRoll((int, int) roll)
+            {
+                array[index] = roll;
+                index = (index + 1) % 3;
+            }
+
+            public bool HasConsecutiveSameRolls
+            {
+                get
+                {
+                    int val = 0;
+
+                    foreach ((int, int) roll in array)
+                    {
+                        if (roll.Item1 != 0 && roll.Item1 == roll.Item1)
+                            val++;
+                    }
+
+                    return val == 3;
+                }
+            }
         }
     }
 

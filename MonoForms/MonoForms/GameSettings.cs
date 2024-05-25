@@ -39,29 +39,5 @@ namespace MonoForms
             controller.BackgroundImageLayout = ImageLayout.Stretch;
             this.Controls.Add(controller);
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            int parsedValue;
-            if (int.TryParse(textBox1.Text, out parsedValue))
-            {
-                startingMoney = parsedValue;
-            }
-            else
-            {
-                // Kullanıcı doğru bir tam sayı girmedikçe bir uyarı mesajı göster
-                MessageBox.Show("Lütfen geçerli bir tam sayı girin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void playerCountCbx_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // seçilen oyuncu sayısı değiştiğinde
-            if (playerCountCbx.SelectedItem != null)
-            {
-                // Convert.ToInt32 kullanarak seçilen öğeyi int'e dönüştürme
-                int currentPlayerCount = Convert.ToInt32(playerCountCbx.SelectedItem);
-                controller.CreatePlayerControls(currentPlayerCount);
-            }
-        }
     }
 }
