@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MonoForms.Utils;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,6 +11,49 @@ namespace MonoForms.FormObjects
 {
     public class GameSettingsController : Control
     {
+        public Button goBack;
+        public Button startGame;
+
+        public Label playerCount;
+        public Label startMoney;
+
+        public TextBox startMoneyTxt;
+
+        Form1 form1;
+        GameSettings gameSettings;
+
+        public List<string> playerNames = new List<string>();
+        public List<string> playerPawns = new List<string>();
+
+        public List<int> playerCountList = new List<int> {2,3,4};
+        public GameSettingsController(Form1 form)
+        {
+            form1 = form;
+            // Initialize goBack Button
+            goBack = new Button();
+            goBack.BackgroundImage = Image.FromFile("../../Assets/goback.png");
+            goBack.BackgroundImageLayout = ImageLayout.Stretch;
+            goBack.Bounds = new Rectangle(30,20,30,20);
+            goBack.Click += new EventHandler(goBackClick);
+            this.Controls.Add(goBack);
+
+            // Initialize startGame Button
+            startGame = new Button();
+            startGame.BackColor = Color.Green;
+            startGame.ForeColor = Color.White;
+            startGame.Text = "Oyuna Başla";
+            startGame.Bounds = new Rectangle(220, 300, 155, 50);
+            startGame.Click += new EventHandler(startGameClick);
+            this.Controls.Add(startGame);
+        }
+
+        private void goBackClick(object sender, EventArgs e)
+        {
+            form1 = new Form1();
+            form1.Show();
+            this.Hide();
+        }
+
         public void ClearExistingControls()
         {
             var controlsToRemove = this.Controls.OfType<Control>()
@@ -26,6 +70,7 @@ namespace MonoForms.FormObjects
         }
         public void CreatePlayerControls(int currentPlayerCount)
         {
+            Globals.PlayerCount = currentPlayerCount;
             List<string> pawns = new List<string> { "Ayakkabı", "Araba", "Şapka", "Ütü", "Rende", "Gemi" };
             int topMargin = 100;
             int rightMargin = this.ClientSize.Width - 380;
@@ -53,9 +98,15 @@ namespace MonoForms.FormObjects
             };
             this.Controls.Add(lblPlayer);
 
+
             TextBox txtPlayerName = new TextBox
             {
+                Name = "txtPlayerName" + playerIndex,
                 Bounds = new Rectangle(rightMargin + 70, topMargin + (playerIndex - 1) * 50, 100, 20)
+            };
+            txtPlayerName.Leave += (sender, e) => 
+            {
+                UpdatePlayerName(txtPlayerName,playerIndex);
             };
             this.Controls.Add(txtPlayerName);
 
@@ -65,9 +116,11 @@ namespace MonoForms.FormObjects
                 DataSource = new List<string>(pawns),
                 Name = "comboBox" + playerIndex
             };
-            cbxPawn.SelectedIndexChanged += (sender, e) => UpdatePawnImage(cbxPawn, playerIndex);
+            cbxPawn.SelectedIndexChanged += (sender, e) => {
+                playerPawns.Add(cbxPawn.SelectedValue.ToString());
+                UpdatePawnImage(cbxPawn, playerIndex);
+            };
             this.Controls.Add(cbxPawn);
-
             PictureBox pcBox = new PictureBox
             {
                 Name = "pictureBox" + playerIndex,
@@ -76,6 +129,23 @@ namespace MonoForms.FormObjects
                 BackgroundImageLayout = ImageLayout.Stretch
             };
             this.Controls.Add(pcBox);
+        }
+        public void startGameClick(object sender, EventArgs e)
+        {
+            int playerCount = Globals.PlayerCount;
+            Globals.Players = new Player[playerCount];
+
+            for (int i = 0; i < playerCount; i++)
+            {
+                Player player = new Player(playerNames[i], playerPawns[i],i);
+                Globals.Players[i] = player;
+            }
+
+            gameSettings = new GameSettings(form1);
+            MainGame mainGame = new MainGame(gameSettings);
+            mainGame.Show();
+
+            gameSettings.Close();
         }
         public void UpdatePawnImage(ComboBox cbxPawn, int playerIndex)
         {
@@ -87,6 +157,18 @@ namespace MonoForms.FormObjects
             {
                 pcBox.BackgroundImage = Image.FromFile(imagePath);
                 pcBox.Refresh();
+            }
+        }
+        public void UpdatePlayerName(TextBox textBox,int playerIndex)
+        {
+            string selectedPawn = textBox.Text;
+            
+            TextBox text = this.Controls.OfType<TextBox>().FirstOrDefault(p => p.Name == $"txtPlayerName{playerIndex}");
+
+            if (text != null)
+            {
+                playerNames.Add(text.Text);
+                text.Refresh();
             }
         }
     }

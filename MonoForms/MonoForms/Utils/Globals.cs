@@ -12,9 +12,14 @@ namespace MonoForms.Utils
         public const int APP_WIDTH = 1280;
         public const int APP_HEIGHT = 720;
 
+        public const int SETTINGS_WIDTH = 1280;
+        public const int SETTINGS_HEIGHT = 720;
+
         public const string PROPERTY_PATH = "../../Data/Property.json";
         public const string LUCK_PATH = "../../Data/Luck.json";
         public const string COMMUNITY_PATH = "../../Data/Community.json";
+
+        public static int STARTING_MONEY = 1500;
 
         public static readonly (int, int)[] positions = new (int, int)[]
         {
@@ -33,6 +38,48 @@ namespace MonoForms.Utils
             (176,956),
 
             ( 67,956), /* kodes */
+
+            ( 67,847),
+            ( 67,763),
+            ( 67,680),
+
+            ( 67,596),
+            ( 67,512),
+            ( 67,428),
+
+            ( 67,344),
+            ( 67,269),
+            ( 67,176),
+
+            ( 67, 67), /* park */
+
+            (176, 67),
+            (269, 67),
+            (344, 67),
+
+            (428, 67),
+            (512, 67),
+            (596, 67),
+
+            (680, 67),
+            (763, 67),
+            (847, 67),
+
+
+            (956, 67), /* kodese git */
+
+            (956,176),
+            (956,269),
+            (956,344),
+
+            (956,428),
+            (956,512),
+            (956,596),
+
+            (956,680),
+            (956,763),
+            (956,847),
+
         };
 
         // in box offests for icons so they wont overlap if they are in same box, 

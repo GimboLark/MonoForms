@@ -52,23 +52,18 @@ namespace MonoForms.FormObjects
             pb1.BackgroundImage = Image.FromFile($"../../Assets/Die/die{rollResult1}.jpg");
             pb2.BackgroundImage = Image.FromFile($"../../Assets/Die/die{rollResult2}.jpg");
 
-            parentController.SonrakiTuraGecilebilir = true;
-            parentController.nextRound.BackColor = Color.Green;
+            this.Refresh();
+            Parent.Refresh();
+            //parentController.SonrakiTuraGecilebilir = true;
+            //parentController.nextRound.BackColor = Color.Green;
 
             int totalRollResult = rollResult1 + rollResult2;
-            UpdatePlayerPosition(totalRollResult);
+
+            Console.WriteLine("ZAR SONUCU:  {0}",totalRollResult);
+            parentController.timer1.Start();
+            parentController.UpdatePlayerPosition(totalRollResult);
         }
 
-        public void UpdatePlayerPosition(int rollResult)
-        {
-            // Get the current player
-            //Player currentPlayer = Globals.Players[parentController.sıra];
-
-            // Update the player's position
-            //currentPlayer.position = (currentPlayer.position + rollResult) % Globals.positions.Length;
-
-            // Update the pawn positions
-            //parentController.PawnUpdate();
-        }
+        
     }
 }

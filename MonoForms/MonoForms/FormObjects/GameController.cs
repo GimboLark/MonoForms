@@ -19,13 +19,17 @@ namespace MonoForms.FormObjects
         public Button closeGame;
 
         // kişilerin sırasını tuttsun
-        public int sıra;
+        public int turn;
 
         // hamlenin düzgün tamamlanmadığını içerir
         // true olunca butonun rengi değişebilir
         public bool SonrakiTuraGecilebilir;
 
-        public PlayerPawn[] pawns;
+        public PlayerPawn[] pawns = new PlayerPawn[4];
+
+        public PlayerScreen playerScreen;
+
+        public Timer timer1;
 
         public GameController()
         {
@@ -34,6 +38,8 @@ namespace MonoForms.FormObjects
             nextRound = new Button();
             nextRound.Text = "Next Round";
             nextRound.Bounds = new Rectangle(Globals.APP_WIDTH - 100, Globals.APP_HEIGHT - 55, 80, 25);
+            nextRound.Click += new EventHandler(NextRound_Click);
+
 
             this.Controls.Add(nextRound);
 
@@ -55,60 +61,49 @@ namespace MonoForms.FormObjects
 
             // initlize dice 
             dice = new Dice(this);
-            dice.Bounds = new Rectangle(800, 50, 110, 90);
+            dice.Bounds = new Rectangle(740, 200, 110, 90);
             dice.BackColor = Color.Khaki;
 
             this.Controls.Add(dice);
 
 
-
-            // init Pawns and update them once to set positions
-
-            /*
-            PawnInit();
-            PawnUpdate();
-            */
-
-            // test pawn start
-            Player player1 = new Player("name", "Ayakkabı", 0);
-            Player player2 = new Player("name", "Gemi", 1);
-            Player player3 = new Player("name", "Rende", 2);
-            Player player4 = new Player("name", "Şapka", 3);
+            // SETS PLAYER DATA IF ITS NULL OR WRONGLY SET
+            // --------------------------------------------------------------------
+            Player player1 = new Player("Player 1", "Ayakkabı", 0);
+            Player player2 = new Player("Player 2", "Gemi",     1);
+            Player player3 = new Player("Player 3", "Rende",    2);
+            Player player4 = new Player("Player 4", "Şapka",    3);
 
             Player[] players = new Player[] { player1, player2, player3, player4 };
 
-
-            PlayerPawn pp1 = new PlayerPawn(player1);
-            PlayerPawn pp2 = new PlayerPawn(player2);
-            PlayerPawn pp3 = new PlayerPawn(player3);
-            PlayerPawn pp4 = new PlayerPawn(player4);
-
-            PlayerPawn[] pps = new PlayerPawn[] {pp1,pp2,pp3, pp4};
-
-            int i = 0;
-
-            foreach (PlayerPawn pp in pps)
+            if (Globals.Players == null || Globals.PlayerCount != Globals.Players.Length)
             {
-                int position = 10;
+                Globals.Players = players;
+                Globals.PlayerCount = 4;
 
-                int x = (int)((float)Globals.positions[position].Item1 / 1024 * 720) + Globals.offsets[players[i].turn].Item1;
-                int y = (int)((float)Globals.positions[position].Item2 / 1024 * 720) + Globals.offsets[players[i++].turn].Item2;
-
-                pp.Bounds = new Rectangle(x, y, 20, 20);
-
-                if (i == 0)
-                    pp.BackColor = Color.Red;
-                if (i == 1)
-                    pp.BackColor = Color.Yellow;
-                if (i == 2)
-                    pp.BackColor = Color.Blue;
-                if (i == 3)
-                    pp.BackColor = Color.Green;
-
-                this.Controls.Add(pp);
-
+                //pawns = pps;
             }
-            // test pawn end
+            // --------------------------------------------------------------------
+
+            // init Pawns and update them once
+            PawnInit();
+            PawnUpdate();
+
+            // set turn to first player
+            turn = 0;
+
+            // yazyo
+            SonrakiTuraGecilebilir = true;
+
+
+            // init timer
+            timer1 = new Timer();
+            timer1.Interval = 500; // 1 sn
+
+            // init player screen must be init after players set
+            playerScreen = new PlayerScreen(this);
+            playerScreen.Bounds = new Rectangle(740, 20, PlayerScreen.WIDTH, PlayerScreen.HEIGHT);
+            this.Controls.Add(playerScreen);
 
 
             // en altta olması için en son eklenmeli
@@ -120,27 +115,48 @@ namespace MonoForms.FormObjects
         // pawns değerini günceller
         public void PawnInit()
         {
+            pawns = new PlayerPawn[Globals.PlayerCount];
+
             for (int i = 0; i < Globals.PlayerCount; i++)
             {
-                PlayerPawn pp = new PlayerPawn(Globals.Players[i]);
+                //string stra = String.Format("{0} {1} {2}", Globals.Players[i].name, Globals.Players[i].imageName, Globals.Players[i].turn);
+                //MessageBox.Show(stra);
 
-                pawns[i] = pp;
+
+                pawns[i] = new PlayerPawn(Globals.Players[i]);
+
+                pawns[i].Bounds = new Rectangle(20, 20, 20, 20);
+
+                if (i == 0)
+                    pawns[i].BackColor = Color.Red;
+                if (i == 1)
+                    pawns[i].BackColor = Color.Yellow;
+                if (i == 2)
+                    pawns[i].BackColor = Color.Blue;
+                if (i == 3)
+                    pawns[i].BackColor = Color.Green;
 
                 this.Controls.Add(pawns[i]);
+
+
             }
         }
 
         public void NextRound_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("NEXT ROUND");
+
             if (SonrakiTuraGecilebilir)
             {
-                sıra = (sıra + 1) % pawns.Length;
-                SonrakiTuraGecilebilir = false;
-                nextRound.BackColor = DefaultBackColor;
+                Console.WriteLine("SIRA {0}", (turn + 1) % 4 + 1);
+
+                turn = (turn + 1) % 4;
+                //SonrakiTuraGecilebilir = false;
+                //nextRound.BackColor = DefaultBackColor;
             }
             else
             {
-                MessageBox.Show("Bir sonraki tura geçebilmek için hamleni yapman lazım");
+                //MessageBox.Show("Bir sonraki tura geçebilmek için hamleni yapman lazım");
             }
         }
 
@@ -152,11 +168,117 @@ namespace MonoForms.FormObjects
             {
                 position = Globals.Players[i].position;
 
-                x = Globals.positions[position].Item1 + Globals.offsets[i].Item1;
-                y = Globals.positions[position].Item2 + Globals.offsets[i].Item2;
+                x = (int)((float)Globals.positions[position].Item1 / 1024 * 720) + Globals.offsets[i].Item1;
+                y = (int)((float)Globals.positions[position].Item2 / 1024 * 720) + Globals.offsets[i].Item2;
 
                 pawns[i].Bounds = new Rectangle(x,y,20,20);
             }
+        }
+
+        public void UpdatePlayerPosition(int rollResult)
+        {
+
+            int lastPosition = Globals.Players[turn].position;
+            int newPosition = (Globals.Players[turn].position + rollResult) % 40;
+
+            Globals.Players[turn].position = newPosition;
+
+            Console.WriteLine("OLD POS {0} NEW POS {1}",lastPosition, newPosition);
+
+            int xa = 0;
+            int ya = 0;
+
+            //int counter = 0;
+
+            int currentStep = (lastPosition + 1) % 40;
+
+            dice.rollButton.Enabled = false;
+
+            // bu 1 sn yede 1 çağrılmasını sağlar
+            timer1.Tick -= Timer_Tick;
+
+            timer1.Tick += Timer_Tick;
+            timer1.Start();
+
+
+            void Timer_Tick(object sender, EventArgs e)
+            {
+                if (currentStep != (newPosition + 1) % 40)
+                {
+                    Console.WriteLine(currentStep);
+                    int x = (int)((float)Globals.positions[currentStep].Item1 / 1024 * 720) + Globals.offsets[turn].Item1;
+                    int y = (int)((float)Globals.positions[currentStep].Item2 / 1024 * 720) + Globals.offsets[turn].Item2;
+
+                    pawns[turn].Bounds = new Rectangle(x, y, 20, 20);
+
+                    this.Refresh();
+                    currentStep = (currentStep + 1) % 40;
+                }
+                else
+                {
+                    dice.rollButton.Enabled = true;
+                    timer1.Stop();
+                    timer1.Tick -= Timer_Tick; // Unsubscribe event handler
+                    
+                }
+            }
+
+            //timer1.Stop();
+
+            // TODO : CALL MAIN MOVE FUNCTION
+            // UpdateGameState()
+
+        }
+
+        public void UpdateGameState()
+        {
+            int previousPosition = Globals.Players[turn].previousPosition;
+            int currentPosition = Globals.Players[turn].position;
+
+            // check eligibility for pass money
+
+            if (true)
+            {
+                // give money
+                // update visuals
+            }
+            else
+            {
+                // do nothing
+            }
+
+            // check current position
+            if(true) //if 0, 10, 20 do nothing, baş,ziyaret,park
+            {
+
+            }
+            else if (true) // if 30 kodes
+            {
+
+            }
+            else if(true) // if 4 , 38 tax
+            {
+
+            }
+            else if(true) // if kamu 2, 17, 33 ; şans 7, 22, 36
+            {
+                if(true) // kamu
+                {
+
+                }
+                else // şans
+                {
+
+                }
+            }
+            else // satın alınabilir değerler
+            {
+                
+            }
+
+            SonrakiTuraGecilebilir = true;
+
+            // update next round button , enable it
         }
     }
 

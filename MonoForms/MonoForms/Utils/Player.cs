@@ -18,6 +18,8 @@ namespace MonoForms.Utils
         public int money;
         public bool[] ownedProperties;
         public bool hasEscapeFromJailCard;
+
+        public int previousPosition;
         public int position;
 
         // diğer değerler
