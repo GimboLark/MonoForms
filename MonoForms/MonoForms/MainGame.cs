@@ -37,7 +37,7 @@ namespace MonoForms
 
             //Dice eklendi
             dice = new Dice(gc);
-            dice.Bounds = new Rectangle(Globals.APP_WIDTH - 220, Globals.APP_HEIGHT - 140, 220, 140);
+            dice.Bounds = new Rectangle(Globals.APP_WIDTH - 120, 20, 100, 100);
             this.Controls.Add(dice);
             //ekranda göstermeyi beceremedim sonra ilgilenilir
         }

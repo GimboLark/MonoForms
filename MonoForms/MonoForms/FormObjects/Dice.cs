@@ -21,17 +21,17 @@ namespace MonoForms.FormObjects
             // Roll button
             rollButton = new Button();
             rollButton.Text = "Roll Dice";
-            rollButton.Bounds = new Rectangle(Globals.APP_WIDTH - 200, Globals.APP_HEIGHT - 55, 80, 25);
+            rollButton.Bounds = new Rectangle(10, 10, 80, 25); // Top-left corner within Dice control
             rollButton.Click += new EventHandler(RollDice_Click);
 
             // Result labels
             resultLabel1 = new Label();
             resultLabel1.Text = "Dice 1: ";
-            resultLabel1.Bounds = new Rectangle(Globals.APP_WIDTH - 200, Globals.APP_HEIGHT - 80, 80, 25);
+            resultLabel1.Bounds = new Rectangle(10, 45, 80, 25); // Below the roll button
 
             resultLabel2 = new Label();
             resultLabel2.Text = "Dice 2: ";
-            resultLabel2.Bounds = new Rectangle(Globals.APP_WIDTH - 200, Globals.APP_HEIGHT - 105, 80, 25);
+            resultLabel2.Bounds = new Rectangle(10, 70, 80, 25); // Below the first result label
 
             this.Controls.Add(rollButton);
             this.Controls.Add(resultLabel1);
