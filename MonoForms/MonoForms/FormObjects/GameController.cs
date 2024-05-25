@@ -53,6 +53,14 @@ namespace MonoForms.FormObjects
             gameBoard.BackgroundImageLayout = ImageLayout.Stretch;
             gameBoard.Bounds = new Rectangle(0, 0, Globals.APP_HEIGHT, Globals.APP_HEIGHT);
 
+            // initlize dice 
+            dice = new Dice(this);
+            dice.Bounds = new Rectangle(800, 50, 110, 90);
+            dice.BackColor = Color.Khaki;
+
+            this.Controls.Add(dice);
+
+
 
             // init Pawns and update them once to set positions
 

@@ -7,13 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MonoForms.FormObjects;
 using MonoForms.Utils;
 
 namespace MonoForms
 {
-    
-    
-
     partial class GameSettings : Form
     {
         private Form previousForm;
@@ -25,28 +23,25 @@ namespace MonoForms
         public int currentPlayerCount;
         public int startingMoney;
 
+        GameSettingsController controller;
+
         public GameSettings(Form previousForm)
         {
             InitializeComponent();
-
-            //imageBitmaps = new Bitmap[6];
-            //imageAvailability = new bool[] {true,true,true,true,true,true};
-
-            //currentPlayerCount = 0;
-            ///*
-            //imageBitmaps[0] = new Bitmap("linktoimage");
-            //imageBitmaps[1] = new Bitmap("linktoimage");
-            //imageBitmaps[2] = new Bitmap("linktoimage");
-            //imageBitmaps[3] = new Bitmap("linktoimage");
-            //imageBitmaps[4] = new Bitmap("linktoimage");
-            //imageBitmaps[5] = new Bitmap("linktoimage");
-            //*/
-
-            //// 
-            ///private Form previousForm;
             this.previousForm = previousForm;
         }
+        private void GameSettings_Load(object sender, EventArgs e)
+        {
+            this.Width = Globals.APP_WIDTH/2;
+            this.Height = Globals.APP_HEIGHT / 2 + 40;
 
+            // game settings controller oluşturulur tüm işlemler burada oluşacak
+            controller = new GameSettingsController();
+            controller.Bounds = new Rectangle(0, 0, Globals.APP_WIDTH/2, Globals.APP_HEIGHT/2);
+            controller.BackgroundImage = Image.FromFile("../../Assets/background2.jpg");
+            controller.BackgroundImageLayout = ImageLayout.Stretch;
+            this.Controls.Add(controller);
+        }
         private void playerCount_SelectedIndexChanged(object sender, EventArgs e)
         {
             // seçilen oyuncu sayısı değiştiğinde
@@ -54,7 +49,7 @@ namespace MonoForms
             {
                 // Convert.ToInt32 kullanarak seçilen öğeyi int'e dönüştürme
                 currentPlayerCount = Convert.ToInt32(playerCount.SelectedItem);
-                CreatePlayerControls(currentPlayerCount);
+                controller.CreatePlayerControls(currentPlayerCount);
                 Console.WriteLine("Seçilen oyuncu sayısı: " + currentPlayerCount);
             } 
             
@@ -67,11 +62,9 @@ namespace MonoForms
 
         private void btnStartGame_Click(object sender, EventArgs e)
         {
-            // Form2'yi aç
             MainGame form2 = new MainGame(this);
             form2.Show();
 
-            // Form1'i gizle
             this.Hide();
         }
 
@@ -80,7 +73,6 @@ namespace MonoForms
             Form1 form2 = new Form1();
             form2.Show();
 
-            // Form1'i gizle
             this.Hide();
         }
 
@@ -96,94 +88,6 @@ namespace MonoForms
                 // Kullanıcı doğru bir tam sayı girmedikçe bir uyarı mesajı göster
                 MessageBox.Show("Lütfen geçerli bir tam sayı girin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void CreatePlayerControls(int currentPlayerCount)
-        {
-            List<string> pawns = new List<string> { "Ayakkabı", "Araba", "Şapka", "Ütü", "Rende", "Gemi" };
-            int topMargin = 100;
-            int rightMargin = this.ClientSize.Width - 350;
-
-            Label pawnType = new Label
-            {
-                Text = "Piyon Seçiniz",
-                Bounds = new Rectangle(rightMargin + 250, topMargin - 25, 80, 20)
-            };
-            this.Controls.Add(pawnType);
-
-            ClearExistingControls();
-
-            for (int i = 1; i <= currentPlayerCount; i++)
-            {
-                AddPlayerControls(i, rightMargin, topMargin, pawns);
-            }
-        }
-
-        private void ClearExistingControls()
-        {
-            var controlsToRemove = this.Controls.OfType<Control>()
-                .Where(c => c is Label lbl && lbl.Text.StartsWith("Oyuncu") ||
-                            c is TextBox txt && txt.Name != "textBox1" ||
-                            c is ComboBox cbx && cbx.Name != "playerCount" ||
-                            c is PictureBox)
-                .ToList();
-
-            foreach (var control in controlsToRemove)
-            {
-                this.Controls.Remove(control);
-            }
-        }
-
-        private void AddPlayerControls(int playerIndex, int rightMargin, int topMargin, List<string> pawns)
-        {
-            Label lblPlayer = new Label
-            {
-                Text = "Oyuncu " + playerIndex,
-                Bounds = new Rectangle(rightMargin, topMargin + (playerIndex - 1) * 50, 60, 20)
-            };
-            this.Controls.Add(lblPlayer);
-
-            TextBox txtPlayerName = new TextBox
-            {
-                Bounds = new Rectangle(rightMargin + 70, topMargin + (playerIndex - 1) * 50, 100, 20)
-            };
-            this.Controls.Add(txtPlayerName);
-
-            ComboBox cbxPawn = new ComboBox
-            {
-                Bounds = new Rectangle(rightMargin + 200, topMargin + (playerIndex - 1) * 50, 75, 20),
-                DataSource = new List<string>(pawns),
-                Name = "comboBox" + playerIndex
-            };
-            cbxPawn.SelectedIndexChanged += (sender, e) => UpdatePawnImage(cbxPawn, playerIndex);
-            this.Controls.Add(cbxPawn);
-
-            PictureBox pcBox = new PictureBox
-            {
-                Name = "pictureBox" + playerIndex,
-                Bounds = new Rectangle(rightMargin + 300, topMargin + (playerIndex - 1) * 50, 30, 30),
-                BackgroundImage = Image.FromFile($"../../Assets/Pawn/Ayakkabı.png"),
-                BackgroundImageLayout = ImageLayout.Stretch
-            };
-            this.Controls.Add(pcBox);
-        }
-
-        private void UpdatePawnImage(ComboBox cbxPawn, int playerIndex)
-        {
-            string selectedPawn = cbxPawn.SelectedItem.ToString();
-            string imagePath = $"../../Assets/Pawn/{selectedPawn}.png";
-            PictureBox pcBox = this.Controls.OfType<PictureBox>().FirstOrDefault(p => p.Name == $"pictureBox{playerIndex}");
-
-            if (pcBox != null)
-            {
-                pcBox.BackgroundImage = Image.FromFile(imagePath);
-                pcBox.Refresh(); 
-            }
-        }
-
-        private void GameSettings_Load(object sender, EventArgs e)
-        {
-
         }
     }
 
@@ -213,11 +117,8 @@ namespace MonoForms
             this.Controls.Add(picturebox);
         }
 
-        public void UpdateImage(object sender, EventArgs e) {
-            // 6 images 
-
-            // get un used images
-            
+        public void UpdateImage(object sender, EventArgs e) 
+        {        
 
         }
     }

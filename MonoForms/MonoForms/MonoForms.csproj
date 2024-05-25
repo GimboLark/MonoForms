@@ -61,6 +61,9 @@
     <Compile Include="FormObjects\GameController.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FormObjects\GameSettingsController.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormObjects\PlayerPawn.cs">
       <SubType>Component</SubType>
     </Compile>

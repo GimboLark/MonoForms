@@ -8,9 +8,13 @@ namespace MonoForms.FormObjects
     public class Dice : Control
     {
         public GameController parentController;
+
+
         public Button rollButton;
-        public Label resultLabel1;
-        public Label resultLabel2;
+
+        public PictureBox pb1;
+        public PictureBox pb2;
+
         public Random random;
 
         public Dice(GameController controller)
@@ -21,29 +25,32 @@ namespace MonoForms.FormObjects
             // Roll button
             rollButton = new Button();
             rollButton.Text = "Roll Dice";
-            rollButton.Bounds = new Rectangle(10, 10, 80, 25); // Top-left corner within Dice control
+            rollButton.Bounds = new Rectangle(10, 10, 90, 25);
             rollButton.Click += new EventHandler(RollDice_Click);
 
             // Result labels
-            resultLabel1 = new Label();
-            resultLabel1.Text = "Dice 1: ";
-            resultLabel1.Bounds = new Rectangle(10, 45, 80, 25); // Below the roll button
+            pb1 = new PictureBox();
+            pb1.BackgroundImage = Image.FromFile($"../../Assets/Die/die1.jpg");
+            pb1.BackgroundImageLayout = ImageLayout.Stretch;
+            pb1.Bounds = new Rectangle(10, 40, 40, 40); 
 
-            resultLabel2 = new Label();
-            resultLabel2.Text = "Dice 2: ";
-            resultLabel2.Bounds = new Rectangle(10, 70, 80, 25); // Below the first result label
+            pb2 = new PictureBox();
+            pb2.BackgroundImage = Image.FromFile($"../../Assets/Die/die1.jpg");
+            pb2.BackgroundImageLayout = ImageLayout.Stretch;
+            pb2.Bounds = new Rectangle(60, 40, 40, 40);
 
             this.Controls.Add(rollButton);
-            this.Controls.Add(resultLabel1);
-            this.Controls.Add(resultLabel2);
+            this.Controls.Add(pb1);
+            this.Controls.Add(pb2);
         }
 
         public void RollDice_Click(object sender, EventArgs e)
         {
             int rollResult1 = random.Next(1, 7); // 1 to 6
             int rollResult2 = random.Next(1, 7); // 1 to 6
-            resultLabel1.Text = "Dice 1: " + rollResult1.ToString();
-            resultLabel2.Text = "Dice 2: " + rollResult2.ToString();
+
+            pb1.BackgroundImage = Image.FromFile($"../../Assets/Die/die{rollResult1}.jpg");
+            pb2.BackgroundImage = Image.FromFile($"../../Assets/Die/die{rollResult2}.jpg");
 
             parentController.SonrakiTuraGecilebilir = true;
             parentController.nextRound.BackColor = Color.Green;
@@ -55,13 +62,13 @@ namespace MonoForms.FormObjects
         public void UpdatePlayerPosition(int rollResult)
         {
             // Get the current player
-            Player currentPlayer = Globals.Players[parentController.sıra];
+            //Player currentPlayer = Globals.Players[parentController.sıra];
 
             // Update the player's position
-            currentPlayer.position = (currentPlayer.position + rollResult) % Globals.positions.Length;
+            //currentPlayer.position = (currentPlayer.position + rollResult) % Globals.positions.Length;
 
             // Update the pawn positions
-            parentController.PawnUpdate();
+            //parentController.PawnUpdate();
         }
     }
 }
