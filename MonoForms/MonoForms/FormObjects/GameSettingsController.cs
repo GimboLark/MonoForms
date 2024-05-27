@@ -22,16 +22,12 @@ namespace MonoForms.FormObjects
         public TextBox startMoneyTxt;
         public ComboBox playerCountCbx;
 
-        Form1 form1;
-        GameSettings gameSettings;
-
         public List<string> playerNames = new List<string>();
         public List<string> playerPawns = new List<string>();
 
         public List<int> playerCountList = new List<int> {2,3,4};
         public GameSettingsController(Form1 form)
         {
-            form1 = form;
             // Initialize goBack Button
             goBack = new Button();
             goBack.BackgroundImage = Image.FromFile("../../Assets/goback.png");
@@ -104,9 +100,12 @@ namespace MonoForms.FormObjects
 
         private void goBackClick(object sender, EventArgs e)
         {
-            form1 = new Form1();
-            form1.Show();
-            this.Hide();
+            // GameSettingsController'ın bulunduğu formu kapat
+            GameSettings gameSettings = this.FindForm() as GameSettings;
+            gameSettings?.Close();
+
+            Form1 Form1 = new Form1();
+            Form1.Show();
         }
 
         public void ClearExistingControls()
@@ -171,7 +170,6 @@ namespace MonoForms.FormObjects
                 DataSource = new List<string>(pawns),
                 Name = "comboBox" + playerIndex
             };
-            
             cbxPawn.SelectedIndexChanged += (sender, e) => {
                 playerPawns.Add(cbxPawn.SelectedValue.ToString());
                 UpdatePawnImage(cbxPawn, playerIndex);
@@ -204,16 +202,18 @@ namespace MonoForms.FormObjects
                         Player player = new Player(playerNames[i], playerPawns[i], i);
                         Globals.Players[i] = player;
                     }
-                    gameSettings = new GameSettings(form1);
-                    MainGame mainGame = new MainGame(gameSettings);
-                    mainGame.Show();
+                    // GameSettingsController'ın bulunduğu formu kapat
+                    GameSettings gameSettings = this.FindForm() as GameSettings;
+                    gameSettings?.Close();
 
-                    gameSettings.Hide();
+                    MainGame mainGameForm = new MainGame(gameSettings);
+                    mainGameForm.Show();
                 }
+                
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
             
         }

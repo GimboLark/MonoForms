@@ -39,3 +39,4 @@ C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csp
 C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.CopyComplete
 C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.exe
 C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.pdb
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.Jail.resources

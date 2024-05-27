@@ -19,7 +19,6 @@ namespace MonoForms
 
         private void MainGame_Load(object sender, EventArgs e)
         {
-
             this.Width = Globals.APP_WIDTH;
             this.Height = Globals.APP_HEIGHT + 40;// + 40 burda yukardaki isim kısmı ve kapatma falan şeylerini dahil ettiği için
 
@@ -31,7 +30,6 @@ namespace MonoForms
             gc.Bounds = new Rectangle(0, 0, Globals.APP_WIDTH, Globals.APP_HEIGHT);
             this.Controls.Add(gc);
             gc.closeGame.Click += new EventHandler(closeGameEvent);
-
         }
 
         private void closeGameEvent(object sender, EventArgs e)

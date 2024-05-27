@@ -19,9 +19,11 @@ namespace MonoForms.Utils
         public bool[] ownedProperties;
         public bool hasEscapeFromJailCard;
         public int jailCounter;
+        public bool isBankrupt = false;
 
         public int previousPosition;
         public int position;
+        public bool IN_JAIL = false;
 
         // diğer değerler
         public RollCache rollCache;

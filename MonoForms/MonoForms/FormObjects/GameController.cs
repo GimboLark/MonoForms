@@ -93,6 +93,10 @@ namespace MonoForms.FormObjects
 
                 //pawns = pps;
             }
+            for (int i = 0; i < Globals.PlayerCount; i++)
+            {
+                Globals.Players[i].previousPosition = Globals.Players[i].position;
+            }
             // --------------------------------------------------------------------
 
             // init Pawns and update them once
@@ -156,12 +160,13 @@ namespace MonoForms.FormObjects
         {
             Console.WriteLine("NEXT ROUND");
 
-            Console.WriteLine("SIRA {0}", (turn + 1) % 4 + 1);
-
-            turn = (turn + 1) % 4;
+            Console.WriteLine("SIRA {0}", (turn + 1) % Globals.PlayerCount + 1);
+            turn = (turn + 1) % Globals.PlayerCount;
 
             nextRound.Enabled = false;
             nextRound.BackColor = Color.DimGray;
+
+            UpdateGameState();
         }
 
         // updates pawns positions
@@ -223,7 +228,10 @@ namespace MonoForms.FormObjects
                     dice.rollButton.Enabled = true;
                     timer1.Stop();
                     timer1.Tick -= Timer_Tick; // Unsubscribe event handler
-                    
+
+                    nextRound.Enabled = true;
+                    nextRound.BackColor = Color.MediumSpringGreen;
+
                 }
             }
 
@@ -236,21 +244,56 @@ namespace MonoForms.FormObjects
 
         public void HandleLuck()
         {
+            Luck luck = new Luck();
+            luck = RandomLuck();
 
+            MessageBox.Show($"{luck.name}\n{luck.text}");
+
+            if (luck.type.ToString() != "GetMoney" && luck.type.ToString() != "LoseMoney")
+                Globals.Players[turn].money += luck.price;
+            else if (luck.type.ToString() != "EscapePrison")
+                Globals.Players[turn].hasEscapeFromJailCard = true;
+            else
+                Globals.Players[turn].position = 10;
         }
 
         public void HandleComm()
         {
+            Community comm = new Community();
+            comm = RandomCommunity();
 
+            MessageBox.Show($"{comm.name}\n{comm.text}");
+
+            if (comm.type.ToString() != "Move")
+                Globals.Players[turn].money += comm.price;
+            else
+                Globals.Players[turn].position = 10;
         }
 
         public void HandleGoToJail()
         {
+            Globals.Players[turn].IN_JAIL = true;
+            Globals.Players[turn].jailCounter = 3;
 
+            Jail jailForm = new Jail(this);
+            jailForm.TopLevel = false;
+            jailForm.Size = new Size(400, 300);
+            this.Controls.Add(jailForm);
+            jailForm.Show();
         }
 
         public void EndRound()
         {
+            turn += 1;
+            while (true)
+            {
+                if (Globals.Players[turn].isBankrupt)
+                    turn += 1;
+                    if (turn == Globals.PlayerCount)
+                        turn = 0;
+                else
+                    break;
+            }
 
         }
 
@@ -265,7 +308,11 @@ namespace MonoForms.FormObjects
         /// </summary>
         public void PlayerLostHandle()
         {
+            if (Globals.Players[turn].money <= 0)
+            {
+                Globals.Players[turn].isBankrupt = true;
 
+            }
         }
 
         /// <summary>
@@ -311,6 +358,7 @@ namespace MonoForms.FormObjects
             if (p_doNothing.Contains(currentPosition)) //if 0, 10, 20 do nothing, baş,ziyaret,park
             {
                 SonrakiTuraGecilebilir = true;
+                EndRound();
             }
             else if (p_jail.Contains(currentPosition)) // if 30 kodes
             {
@@ -356,6 +404,8 @@ namespace MonoForms.FormObjects
             }
             else // satın alınabilir değerler
             {
+                Console.WriteLine(Globals.Properties.Length);
+
                 Property currentProperty = Globals.Properties[currentPosition];
 
                 // owned by current
@@ -408,10 +458,26 @@ namespace MonoForms.FormObjects
 
         public Luck RandomLuck()
         {
-            
+            Luck luck = new Luck();
 
-            return new Luck();
+            luck = Globals.LuckQueue.Peek();
+            if(luck.text == "Get Out of Jail Free")
+            {
+                //Burada jail free card mı değil mi kontrol ediliyor.
+            }
+            Globals.LuckQueue.Dequeue();
+
+            return luck;
         }
-        
+
+        public Community RandomCommunity()
+        {
+            Community community = new Community();
+
+            community = Globals.CommunityQueue.Peek();
+            Globals.CommunityQueue.Dequeue();
+
+            return community;
+        }
     }
 }

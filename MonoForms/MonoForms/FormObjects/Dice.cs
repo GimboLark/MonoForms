@@ -9,6 +9,9 @@ namespace MonoForms.FormObjects
     {
         public GameController parentController;
 
+        public int result1;
+        public int result2;
+        public bool isRollButtonClicked = false;
 
         public Button rollButton;
 
@@ -46,29 +49,29 @@ namespace MonoForms.FormObjects
 
         public void RollDice_Click(object sender, EventArgs e)
         {
-            int rollResult1 = random.Next(1, 7); // 1 to 6
-            int rollResult2 = random.Next(1, 7); // 1 to 6
+            isRollButtonClicked = true;
+            result1 = random.Next(1, 7); // 1 to 6
+            result2 = random.Next(1, 7); // 1 to 6
 
-            pb1.BackgroundImage = Image.FromFile($"../../Assets/Die/die{rollResult1}.jpg");
-            pb2.BackgroundImage = Image.FromFile($"../../Assets/Die/die{rollResult2}.jpg");
+            pb1.BackgroundImage = Image.FromFile($"../../Assets/Die/die{result1}.jpg");
+            pb2.BackgroundImage = Image.FromFile($"../../Assets/Die/die{result2}.jpg");
 
             this.Refresh();
             Parent.Refresh();
             //parentController.SonrakiTuraGecilebilir = true;
             //parentController.nextRound.BackColor = Color.Green;
 
-            int totalRollResult = rollResult1 + rollResult2;
-
+            int totalRollResult = result1 + result2;
             // zarı atan playera rollu kaydeder
-            Globals.Players[parentController.turn].NewRoll((rollResult1, rollResult2));
+            Globals.Players[parentController.turn].NewRoll((result1, result2));
 
             //Console.WriteLine("ZAR SONUCU:  {0}",totalRollResult);
             
             parentController.timer1.Start();
-            // zar sonucuna göre güncellemek için gameController update fonk çağrılır
-            parentController.UpdatePlayerPosition(totalRollResult);
-        }
+            if (!Globals.Players[parentController.turn].IN_JAIL)
+                parentController.UpdatePlayerPosition(totalRollResult);
 
-        
+            // zar sonucuna göre güncellemek için gameController update fonk çağrılır
+        }
     }
 }

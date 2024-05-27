@@ -23,6 +23,8 @@ namespace MonoForms.Utils
         public static int PASS_MONEY_GAIN = 200;
         public static int TAX_DIFFICULTY = 1;
 
+        
+
         public static readonly (int, int)[] positions = new (int, int)[]
         {
             (956,956), /* start */
@@ -126,6 +128,9 @@ namespace MonoForms.Utils
             //Lucklar enqueue edilmeden önce Luck listesi burada karılır
             Lucks = Lucks.OrderBy(x => Guid.NewGuid()).ToArray();
 
+            //Communities enqueue edilmeden önce Communities listesi burada karılır
+            Communities = Communities.OrderBy(x => Guid.NewGuid()).ToArray();
+
             foreach(Luck luck in Lucks)
                 LuckQueue.Enqueue(luck);
 
@@ -152,5 +157,4 @@ namespace MonoForms.Utils
             Players = players;
         }
     }
-
 }
