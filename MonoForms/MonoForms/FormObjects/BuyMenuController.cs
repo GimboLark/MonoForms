@@ -23,8 +23,8 @@ namespace MonoForms.FormObjects
         {
             // intilize backButton button
             backButton = new Button();
-            backButton.Text = "Close Game";
-            backButton.Bounds = new Rectangle(0, 0, 100, 40);
+            backButton.Text = "Close This";
+            backButton.Bounds = new Rectangle(100, 100, 100, 40);
             backButton.ForeColor = Color.White;
             backButton.BackColor = Color.Red;
             backButton.Click += new EventHandler(backButton_Click);

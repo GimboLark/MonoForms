@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MonoForms.Utils;
 
 namespace MonoForms
 {
@@ -35,7 +36,8 @@ namespace MonoForms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Console.WriteLine("GLOBALS INIT");
+            Globals.Init();
         }
     }
 }

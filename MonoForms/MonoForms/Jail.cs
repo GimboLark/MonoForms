@@ -31,7 +31,7 @@ namespace MonoForms
         {
 
             JailDice jd = new JailDice(Controller);
-            jd.Bounds = new Rectangle(60, 60, 120, 100);
+            jd.Bounds = new Rectangle(20, 20, 120, 100);
             jd.BackColor = Color.Chartreuse;
             this.Controls.Add(jd);
 
@@ -56,7 +56,7 @@ namespace MonoForms
             button3.Text = "Şans Kartını Kullan";
             button3.Size = new Size(100, 50);
             button3.Location = new Point(50, 190);
-            if (Globals.Players[Controller.turn].hasEscapeFromJailCard)
+            if (!Globals.Players[Controller.turn].hasEscapeFromJailCard)
                 button3.Enabled = false;
             button3.Click += new EventHandler(Button3_Click);
             this.Controls.Add(button3);

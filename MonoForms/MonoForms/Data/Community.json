@@ -1,74 +1,76 @@
-[
-  {
-    "name": "Advance to Go",
-    "type": "Move",
-    "price": 0,
-    "text": "Advance to Go (Collect $200)"
-  },
-  {
-    "name": "Bank error in your favor",
-    "type": "GetMoney",
-    "price": 200,
-    "text": "Collect $200"
-  },
-  {
-    "name": "Doctor's fees",
-    "type": "LoseMoney",
-    "price": -50,
-    "text": "Pay $50"
-  },
-  {
-    "name": "From sale of stock you get $50",
-    "type": "GetMoney",
-    "price": 50,
-    "text": "Collect $50"
-  },
-  {
-    "name": "Go to Jail",
-    "type": "Move",
-    "price": 0,
-    "text": "Go directly to Jail. Do not pass Go, do not collect $200"
-  },
-  {
-    "name": "Grand Opera Night",
-    "type": "GetMoney",
-    "price": 50,
-    "text": "Collect $50 from every player for opening night seats"
-  },
-  {
-    "name": "Income Tax refund",
-    "type": "GetMoney",
-    "price": 20,
-    "text": "Collect $20"
-  },
-  {
-    "name": "Life Insurance Matures",
-    "type": "GetMoney",
-    "price": 100,
-    "text": "Collect $100"
-  },
-  {
-    "name": "Pay Hospital Fees",
-    "type": "LoseMoney",
-    "price": -100,
-    "text": "Pay $100"
-  },
-  {
-    "name": "Pay School Fees",
-    "type": "LoseMoney",
-    "price": -150,
-    "text": "Pay $150"
-  },
-  {
-    "name": "Receive $25 consultancy fee",
-    "type": "GetMoney",
-    "price": 25,
-    "text": "Collect $25"
-  },
-  {
-    "name": "You inherit $100",
-    "type": "GetMoney",
-    "price": 100,
-    "text": "Collect $100"
-  }
-]
+{
+  "communities": [
+    {
+      "name": "Advance to Go",
+      "type": "Move",
+      "price": 0,
+      "text": "Advance to Go (Collect $200)"
+    },
+    {
+      "name": "Bank error in your favor",
+      "type": "GetMoney",
+      "price": 200,
+      "text": "Collect $200"
+    },
+    {
+      "name": "Doctor's fees",
+      "type": "LoseMoney",
+      "price": -50,
+      "text": "Pay $50"
+    },
+    {
+      "name": "From sale of stock you get $50",
+      "type": "GetMoney",
+      "price": 50,
+      "text": "Collect $50"
+    },
+    {
+      "name": "Go to Jail",
+      "type": "Move",
+      "price": 0,
+      "text": "Go directly to Jail. Do not pass Go, do not collect $200"
+    },
+    {
+      "name": "Grand Opera Night",
+      "type": "GetMoney",
+      "price": 50,
+      "text": "Collect $50 from every player for opening night seats"
+    },
+    {
+      "name": "Income Tax refund",
+      "type": "GetMoney",
+      "price": 20,
+      "text": "Collect $20"
+    },
+    {
+      "name": "Life Insurance Matures",
+      "type": "GetMoney",
+      "price": 100,
+      "text": "Collect $100"
+    },
+    {
+      "name": "Pay Hospital Fees",
+      "type": "LoseMoney",
+      "price": -100,
+      "text": "Pay $100"
+    },
+    {
+      "name": "Pay School Fees",
+      "type": "LoseMoney",
+      "price": -150,
+      "text": "Pay $150"
+    },
+    {
+      "name": "Receive $25 consultancy fee",
+      "type": "GetMoney",
+      "price": 25,
+      "text": "Collect $25"
+    },
+    {
+      "name": "You inherit $100",
+      "type": "GetMoney",
+      "price": 100,
+      "text": "Collect $100"
+    }
+  ]
+}

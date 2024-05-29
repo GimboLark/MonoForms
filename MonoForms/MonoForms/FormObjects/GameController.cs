@@ -36,6 +36,14 @@ namespace MonoForms.FormObjects
 
         public Timer timer1;
 
+
+        public int[] propertyOwners = new int[] {
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
+        }; 
+
         public GameController()
         {
 
@@ -44,6 +52,7 @@ namespace MonoForms.FormObjects
             nextRound.Text = "Next Round";
             nextRound.Bounds = new Rectangle(Globals.APP_WIDTH - 200, Globals.APP_HEIGHT - 90, 100, 40);
             nextRound.Click += new EventHandler(NextRound_Click);
+            nextRound.Enabled = false;
 
 
             this.Controls.Add(nextRound);
@@ -203,20 +212,54 @@ namespace MonoForms.FormObjects
             Console.WriteLine("SIRA {0}", (turn + 1) % Globals.PlayerCount + 1);
             turn = (turn + 1) % Globals.PlayerCount;
 
+            {
+                int bankruptCounter = 0;
+                while (true)
+                {
+                    if (Globals.Players[turn].isBankrupt)
+                    {
+                        turn += (turn + 1) % Globals.PlayerCount;
+                        bankruptCounter++;
+                    }
+                    else
+                        break;
+                }
+
+                if ( 1 == Globals.PlayerCount - bankruptCounter )
+                {
+                    // END GAME WINNER IS THE Globals.Player[TURN]
+                }
+
+            }
+
             nextRound.Enabled = false;
             nextRound.BackColor = Color.DimGray;
 
-            UpdateGameState();
+            // IF NEXT PLAYER IN JAIL
+            if (Globals.Players[turn].IN_JAIL)
+            {
+                Console.WriteLine("THIS PLAYER IS IN JAIL");
+                UpdateGameState();
+            }
+            else
+            {
+                dice.rollButton.Enabled = true;
+                dice.rollButton.BackColor = Color.Green;
+            }
+
         }
+
         private void BuyProperty_Click(object sender, EventArgs e)
         {
-            BuyMenu buyMenu = new BuyMenu();
+
+            BuyMenu buyMenu = new BuyMenu(this);
             buyMenu.Show();
         }
 
-        public void UpdatePlayerPosition(int rollResult)
+        public void UpdatePlayerPosition(int rollResult, bool normal = true, Form form = null)
         {
             int lastPosition = Globals.Players[turn].position;
+            Globals.Players[turn].previousPosition = Globals.Players[turn].position;
             int newPosition = (Globals.Players[turn].position + rollResult) % 40;
 
             Globals.Players[turn].position = newPosition;
@@ -224,8 +267,6 @@ namespace MonoForms.FormObjects
             Console.WriteLine("OLD POS {0} NEW POS {1}", lastPosition, newPosition);
 
             int currentStep = (lastPosition + 1) % 40;
-
-            dice.rollButton.Enabled = false;
 
             // Unsubscribe any existing event handler before subscribing
             nextRound.BackColor = Color.White;
@@ -249,13 +290,21 @@ namespace MonoForms.FormObjects
                 }
                 else
                 {
-                    dice.rollButton.Enabled = true;
                     timer1.Stop();
                     timer1.Tick -= Timer_Tick; // Unsubscribe event handler
 
-                    nextRound.Enabled = true;
-                    nextRound.BackColor = Color.MediumSpringGreen;
-                    UpdateGameState(); // UPDATE GAME STATE
+                    if (form != null)
+                    {
+                        Console.WriteLine("FORM CLOSED");
+                        form.Close();
+                    }
+
+                    if (normal)
+                        UpdateGameState(); // UPDATE GAME STATE
+                    else
+                    {
+
+                    }
                 }
             }
         }
@@ -268,7 +317,10 @@ namespace MonoForms.FormObjects
             MessageBox.Show($"{luck.name}\n{luck.text}");
 
             if (luck.type.ToString() == "GetMoney" || luck.type.ToString() == "LoseMoney")
+            {
                 Globals.Players[turn].money += luck.price;
+                playerScreen.Update(turn);
+            }
             else if (luck.type.ToString() != "EscapePrison")
                 Globals.Players[turn].hasEscapeFromJailCard = true;
             else
@@ -283,31 +335,36 @@ namespace MonoForms.FormObjects
             MessageBox.Show($"{comm.name}\n{comm.text}");
 
             if (comm.type.ToString() != "Move")
+            {
                 Globals.Players[turn].money += comm.price;
+                playerScreen.Update(turn);
+            }
             else
                 Globals.Players[turn].position = 10;
+        }
+
+        public void HandleJail()
+        {
+            Jail jailForm = new Jail(this);
+            jailForm.Show();
         }
 
         public void HandleGoToJail()
         {
             Globals.Players[turn].IN_JAIL = true;
             Globals.Players[turn].jailCounter = 3;
-
-            Jail jailForm = new Jail(this);
-            jailForm.Show();
+            Console.WriteLine("WALKING TO JAIL");
+            UpdatePlayerPosition(20 ,false);
         }
 
+        /// <summary>
+        /// enables nextRound button
+        /// </summary>
         public void EndRound()
         {
-            while (true)
-            {
-                if (Globals.Players[turn].isBankrupt)
-                    turn += 1;
-                    if (turn == Globals.PlayerCount)
-                        turn = 0;
-                else
-                    break;
-            }
+
+            Console.WriteLine("NEXT ROUND ENABLED");
+            nextRound.Enabled = true;
 
         }
 
@@ -340,6 +397,13 @@ namespace MonoForms.FormObjects
             // 3 tekrarlı roll durumu
             if (Globals.Players[turn].HasConsecutiveSameRolls)
             {
+                Console.WriteLine("HAS 3 CONSECUTIVE ROLLS");
+
+                foreach( (int,int) roll in Globals.Players[turn].rollCache.array)
+                {
+                    Console.WriteLine("Roll: {0} {1}", roll.Item1, roll.Item2);
+                }
+
                 // same as goto jail
                 HandleGoToJail();
                 EndRound();
@@ -347,8 +411,11 @@ namespace MonoForms.FormObjects
             }
 
             // check eligibility for pass money
+            Console.WriteLine("CHECKING PASS MONEY STATUS");
+            Console.WriteLine("PREVIOUS {0} NOW {1}", previousPosition, currentPosition);
             if (currentPosition < previousPosition)
             {
+                Console.WriteLine("ELIGIBLE FOR PASS MONEY");
                 // give money
                 Globals.Players[turn].money += Globals.PASS_MONEY_GAIN;
                 // update visuals
@@ -359,8 +426,9 @@ namespace MonoForms.FormObjects
 
 
             // check current position
-            List<int> p_doNothing = new List<int>   {  0, 10, 20 };
-            List<int> p_jail = new List<int>        { 30         };
+            List<int> p_doNothing = new List<int>   {  0, 20     };
+            List<int> p_jail = new List<int>        { 10         };
+            List<int> p_gotojail = new List<int>    { 30         };
             List<int> p_tax = new List<int>         {  4, 38     };
             List<int> p_luck = new List<int>        {  7, 22, 36 };
             List<int> p_comm = new List<int>        {  2, 17, 33 };
@@ -376,7 +444,15 @@ namespace MonoForms.FormObjects
                 SonrakiTuraGecilebilir = true;
                 EndRound();
             }
-            else if (p_jail.Contains(currentPosition)) // if 30 kodes
+            else if (p_jail.Contains(currentPosition) && Globals.Players[turn].IN_JAIL) // if 30 kodes
+            {
+                Console.WriteLine(" IN JAIL");
+                // same as goto jail
+                HandleJail();
+                EndRound();
+                return;
+            }
+            else if (p_gotojail.Contains(currentPosition)) // if 30 kodes
             {
                 Console.WriteLine("WENT TO JAIL");
                 // same as goto jail
@@ -391,7 +467,9 @@ namespace MonoForms.FormObjects
                 { 
                     if(Globals.Players[turn].money - Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN > 0) // yeterli para varsa
                     {
+                        MessageBox.Show("Gelir Verigisi");
                         Globals.Players[turn].money -= Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN;
+                        playerScreen.Update(turn);
                     }
                     else // yeterli para yoksa
                     {
@@ -402,7 +480,9 @@ namespace MonoForms.FormObjects
                 {
                     if (Globals.Players[turn].money - Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN / 2 > 0) // yeterli para varsa
                     {
+                        MessageBox.Show("Lüküs Verigisi");
                         Globals.Players[turn].money -= Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN / 2;
+                        playerScreen.Update(turn);
                     }
                     else // yeterli para yoksa
                     {
@@ -466,9 +546,7 @@ namespace MonoForms.FormObjects
 
             // update next round button , enable it
 
-            nextRound.Enabled = true;
-            nextRound.BackColor = Color.MediumSpringGreen;
-
+            EndRound();
         }
 
         public Luck RandomLuck()

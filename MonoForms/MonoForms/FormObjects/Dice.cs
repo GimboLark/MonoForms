@@ -49,6 +49,8 @@ namespace MonoForms.FormObjects
 
         public void RollDice_Click(object sender, EventArgs e)
         {
+            rollButton.Enabled = false;
+
             isRollButtonClicked = true;
             result1 = random.Next(1, 7); // 1 to 6
             result2 = random.Next(1, 7); // 1 to 6
@@ -67,7 +69,12 @@ namespace MonoForms.FormObjects
 
             //Console.WriteLine("ZAR SONUCU:  {0}",totalRollResult);
 
-            totalRollResult = 30;
+
+
+            // DEBUG JAIL
+            // totalRollResult = 30;
+
+            totalRollResult = 25;
 
             parentController.timer1.Start();
             if (!Globals.Players[parentController.turn].IN_JAIL)

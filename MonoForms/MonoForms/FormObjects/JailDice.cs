@@ -20,6 +20,8 @@ namespace MonoForms.FormObjects
 
         public Random random;
 
+       
+
         public JailDice(GameController controller)
         {
             parentController = controller;
@@ -66,11 +68,13 @@ namespace MonoForms.FormObjects
             Globals.Players[parentController.turn].NewRoll((result1, result2));
 
             //Console.WriteLine("ZAR SONUCU:  {0}",totalRollResult);
+            // JAIL EVENT
             if (result1 == result2)
             {
                 MessageBox.Show("Aynı geldi");
+                Console.WriteLine("AYNI GELDİ");
                 Globals.Players[parentController.turn].IN_JAIL = false;
-                parentController.UpdatePlayerPosition(result1 + result2);
+                parentController.UpdatePlayerPosition(result1 + result2, true, this.FindForm() as Jail);
                 parentController.SonrakiTuraGecilebilir = true;
             }
             else
@@ -81,9 +85,6 @@ namespace MonoForms.FormObjects
                     Globals.Players[parentController.turn].IN_JAIL = false;
             }
 
-            // JAIL EVENT
-
-            // zar sonucuna göre güncellemek için gameController update fonk çağrılır
         }
     }
 }

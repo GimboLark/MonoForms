@@ -17,7 +17,7 @@ namespace MonoForms.Utils
         // default değerler
         public int money;
         public bool[] ownedProperties;
-        public bool hasEscapeFromJailCard;
+        public bool hasEscapeFromJailCard = false;
         public int jailCounter;
         public bool isBankrupt = false;
 
@@ -73,9 +73,13 @@ namespace MonoForms.Utils
 
                     foreach ((int, int) roll in array)
                     {
-                        if (roll.Item1 != 0 && roll.Item1 == roll.Item1)
+                        if (roll.Item1 != 0 && (roll.Item1 == roll.Item2))
+                        {
+                            Console.WriteLine(roll.Item1);
+                            Console.WriteLine(roll.Item2);
                             val++;
-                    }
+                        }
+                    }   
 
                     return val == 3;
                 }

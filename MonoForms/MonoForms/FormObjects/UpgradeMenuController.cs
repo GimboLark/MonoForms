@@ -10,16 +10,5 @@ namespace MonoForms.FormObjects
 {
     public class UpgradeMenuController : Control
     {
-        public Player player;
-
-        
-
-
-        public bool IsOwned()
-        {
-            if(player.ownedProperties[player.position])
-                return true;
-            return false;
-        }
     }
 }

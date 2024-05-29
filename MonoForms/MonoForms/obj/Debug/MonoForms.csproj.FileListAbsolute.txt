@@ -41,3 +41,20 @@ C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.exe
 C:\Users\Dell\Source\Repos\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.pdb
 C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.Jail.resources
 C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.BuyMenu.resources
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\bin\Debug\MonoForms.exe.config
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\bin\Debug\MonoForms.exe
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\bin\Debug\MonoForms.pdb
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\bin\Debug\Newtonsoft.Json.dll
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\bin\Debug\Newtonsoft.Json.xml
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.AssemblyReference.cache
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.BuyMenu.resources
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.Form1.resources
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.GameSettings.resources
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.Jail.resources
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.MainGame.resources
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.Properties.Resources.resources
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.GenerateResource.cache
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.CoreCompileInputs.cache
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.Up2Date
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.exe
+C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.pdb

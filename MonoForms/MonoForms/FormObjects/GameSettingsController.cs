@@ -235,13 +235,15 @@ namespace MonoForms.FormObjects
                         Player player = new Player(playerNames[i], playerPawns[i], i);
                         Globals.Players[i] = player;
                     }
+                    
+                    Console.WriteLine("SUCCESS");
+
                     // GameSettingsController'ın bulunduğu formu kapat
                     GameSettings gameSettings = this.FindForm() as GameSettings;
                     gameSettings?.Close();
 
                     MainGame mainGameForm = new MainGame(gameSettings);
                     mainGameForm.Show();
-                    Console.WriteLine("SUCCESS");
                 }
                 
             }

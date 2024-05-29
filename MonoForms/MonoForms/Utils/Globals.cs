@@ -23,7 +23,7 @@ namespace MonoForms.Utils
         public const string LUCK_PATH = "../../Data/Luck.json";
         public const string COMMUNITY_PATH = "../../Data/Community.json";
 
-        public static int STARTING_MONEY = 1500;
+        public static int STARTING_MONEY = 1500; // DEFAULT 1500
         public static int PASS_MONEY_GAIN = 200;
         public static int TAX_DIFFICULTY = 1;
 
@@ -125,6 +125,8 @@ namespace MonoForms.Utils
 
         public static void Init()
         {
+            Console.WriteLine("GLOBALS INITILIZED");
+
             PropertyCards pc = PropertyCards.FromJsonFile(PROPERTY_PATH);
             LuckCards lc = LuckCards.FromJsonFile(LUCK_PATH);
             CommunityCards cc = CommunityCards.FromJsonFile(COMMUNITY_PATH);
@@ -138,10 +140,12 @@ namespace MonoForms.Utils
             //Communities enqueue edilmeden önce Communities listesi burada karılır
             Communities = Communities.OrderBy(x => Guid.NewGuid()).ToArray();
 
-            foreach(Luck luck in Lucks)
+            LuckQueue = new Queue<Luck>();
+            foreach (Luck luck in Lucks)
                 LuckQueue.Enqueue(luck);
 
-            foreach(Community community in Communities)
+            CommunityQueue = new Queue<Community>();
+            foreach (Community community in Communities)
                 CommunityQueue.Enqueue(community);
 
             Properties = new Property[40];

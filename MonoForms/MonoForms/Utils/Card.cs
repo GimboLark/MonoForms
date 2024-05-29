@@ -31,24 +31,47 @@ namespace MonoForms.Utils
 
     public class Property
     {
+        /*
+        {
+            "name": "Mediterranean Avenue",
+            "color": "Brown",
+            "category": "properties",
+            "price": 60,
+            "rent": [ 2, 10, 30, 90, 160, 250 ],
+            "house_cost": 50,
+            "hotel_cost": 50
+        }
+        
+         */
+
         public string name;
+        public string color;
+
 
         [JsonConverter(typeof(StringEnumConverter))]
         public PropertyType type;
         public int price;
-        public int mortgagePrice;
+
+        [JsonIgnore]
+        public int mortgagePrice
+        {
+            get { return (int)(price * 0.6); }
+        }
+
 
         [JsonIgnore]
         public bool IsBought;
 
-        public int[] rents;
+        public int[] rent;
         // BURSA: 40 - 200 - 500 - 1800 - 3200 - 4500
         // Telekom: 40 - 100
         // Metro: 250 - 500 - 1000 - 2000
 
         // Jsonda servis , transport 0
-        public int[] upgradePrice;
-        // Json 0 olacak
+        public int house_cost;
+        public int hotel_cost;
+
+        [JsonIgnore]
         public int upgradeLevel;
     }
 
