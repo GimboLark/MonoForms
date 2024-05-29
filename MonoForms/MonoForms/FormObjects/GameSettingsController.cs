@@ -187,9 +187,42 @@ namespace MonoForms.FormObjects
         }
         public void startGameClick(object sender, EventArgs e)
         {
+            if(Globals.DEBUG)
+            {
+                Player player1 = new Player("Player 1", "Ayakkabı", 0);
+                Player player2 = new Player("Player 2", "Gemi", 1);
+                Player player3 = new Player("Player 3", "Rende", 2);
+                Player player4 = new Player("Player 4", "Şapka", 3);
+
+                Player[] players = new Player[] { player1, player2, player3, player4 };
+
+                Globals.Players = players;
+                Globals.PlayerCount = 4;
+
+
+                /*
+                PlayerPawn[] pp = new PlayerPawn[4];
+
+                foreach(Player p in players)
+                {
+                    pp[0] = new PlayerPawn(p);
+                }
+                 */
+
+                GameSettings gameSettings = this.FindForm() as GameSettings;
+                gameSettings?.Close();
+
+                MainGame mainGameForm = new MainGame(gameSettings);
+                mainGameForm.Show();
+                Console.WriteLine("SUCCESS");
+
+            }
+
             try
             {
                 int playerCount = Globals.PlayerCount;
+                Console.WriteLine("TRYING TO START A GAME");
+                Console.WriteLine("playerNames.Count {0}\nplayerCount {1}\nplayerPawns.Count{2}");
                 if (playerNames.Count == playerCount && playerPawns.Count == playerCount && playerCount != 0)
                 {
                     int startMoney = Convert.ToInt32(startMoneyTxt.Text);
@@ -208,6 +241,7 @@ namespace MonoForms.FormObjects
 
                     MainGame mainGameForm = new MainGame(gameSettings);
                     mainGameForm.Show();
+                    Console.WriteLine("SUCCESS");
                 }
                 
             }

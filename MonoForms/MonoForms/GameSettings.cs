@@ -27,6 +27,7 @@ namespace MonoForms
             InitializeComponent();
             this.previousForm = previousForm;
         }
+
         private void GameSettings_Load(object sender, EventArgs e)
         {
             this.Width = Globals.SETTINGS_WIDTH / 2;

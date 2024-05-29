@@ -20,6 +20,8 @@ namespace MonoForms.FormObjects
         // sonraki tur butonu
         public Button nextRound;
         public Button closeGame;
+        public Button passProperty;
+        public Button buyProperty;
 
         // kişilerin sırasını tuttsun
         public int turn;
@@ -40,7 +42,7 @@ namespace MonoForms.FormObjects
             // intilize nextRound button
             nextRound = new Button();
             nextRound.Text = "Next Round";
-            nextRound.Bounds = new Rectangle(Globals.APP_WIDTH - 100, Globals.APP_HEIGHT - 55, 80, 25);
+            nextRound.Bounds = new Rectangle(Globals.APP_WIDTH - 200, Globals.APP_HEIGHT - 90, 100, 40);
             nextRound.Click += new EventHandler(NextRound_Click);
 
 
@@ -49,11 +51,22 @@ namespace MonoForms.FormObjects
             // intilize closeGame button
             closeGame = new Button();
             closeGame.Text = "Close Game";
-            closeGame.Bounds = new Rectangle(Globals.APP_WIDTH - 100, Globals.APP_HEIGHT - 35, 80, 25);
+            closeGame.Bounds = new Rectangle(Globals.APP_WIDTH - 200, Globals.APP_HEIGHT - 40, 100, 40);
             closeGame.ForeColor = Color.White;
             closeGame.BackColor = Color.Red;
+            closeGame.Click += new EventHandler(closeGame_Event);
 
             this.Controls.Add(closeGame);
+
+            // intilize buyProperty button
+            buyProperty = new Button();
+            buyProperty.Text = "Buy";
+            buyProperty.Bounds = new Rectangle(Globals.APP_WIDTH - 310, Globals.APP_HEIGHT - 40, 100, 40);
+            buyProperty.ForeColor = Color.White;
+            buyProperty.BackColor = Color.Green;
+            buyProperty.Click += new EventHandler(BuyProperty_Click);
+
+            this.Controls.Add(buyProperty);
 
 
             // intilize gameboard background
@@ -112,7 +125,7 @@ namespace MonoForms.FormObjects
 
             // init timer
             timer1 = new Timer();
-            timer1.Interval = 500; // 1 sn
+            timer1.Interval = Globals.TIMER_TICK_LENGHT ; // 1 sn
 
             // init player screen must be init after players set
             playerScreen = new PlayerScreen(this);
@@ -124,6 +137,18 @@ namespace MonoForms.FormObjects
             this.Controls.Add(gameBoard);
 
         }
+
+        private void closeGame_Event(object sender, EventArgs e)
+        {
+            // Form2'yi aç
+            Form1 form2 = new Form1();
+            form2.Show();
+
+            // Form1'i gizle
+            this.Hide();
+        }
+
+
 
 
         // pawns değerini günceller
@@ -156,19 +181,6 @@ namespace MonoForms.FormObjects
             }
         }
 
-        public void NextRound_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("NEXT ROUND");
-
-            Console.WriteLine("SIRA {0}", (turn + 1) % Globals.PlayerCount + 1);
-            turn = (turn + 1) % Globals.PlayerCount;
-
-            nextRound.Enabled = false;
-            nextRound.BackColor = Color.DimGray;
-
-            UpdateGameState();
-        }
-
         // updates pawns positions
         public void PawnUpdate()
         {
@@ -184,31 +196,43 @@ namespace MonoForms.FormObjects
             }
         }
 
+        public void NextRound_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("NEXT ROUND");
+
+            Console.WriteLine("SIRA {0}", (turn + 1) % Globals.PlayerCount + 1);
+            turn = (turn + 1) % Globals.PlayerCount;
+
+            nextRound.Enabled = false;
+            nextRound.BackColor = Color.DimGray;
+
+            UpdateGameState();
+        }
+        private void BuyProperty_Click(object sender, EventArgs e)
+        {
+            BuyMenu buyMenu = new BuyMenu();
+            buyMenu.Show();
+        }
+
         public void UpdatePlayerPosition(int rollResult)
         {
-
             int lastPosition = Globals.Players[turn].position;
             int newPosition = (Globals.Players[turn].position + rollResult) % 40;
 
             Globals.Players[turn].position = newPosition;
 
-            Console.WriteLine("OLD POS {0} NEW POS {1}",lastPosition, newPosition);
-
-            int xa = 0;
-            int ya = 0;
-
-            //int counter = 0;
+            Console.WriteLine("OLD POS {0} NEW POS {1}", lastPosition, newPosition);
 
             int currentStep = (lastPosition + 1) % 40;
 
             dice.rollButton.Enabled = false;
 
-            // bu 1 sn yede 1 çağrılmasını sağlar
+            // Unsubscribe any existing event handler before subscribing
+            nextRound.BackColor = Color.White;
             timer1.Tick -= Timer_Tick;
 
             timer1.Tick += Timer_Tick;
             timer1.Start();
-
 
             void Timer_Tick(object sender, EventArgs e)
             {
@@ -231,15 +255,9 @@ namespace MonoForms.FormObjects
 
                     nextRound.Enabled = true;
                     nextRound.BackColor = Color.MediumSpringGreen;
-
+                    UpdateGameState(); // UPDATE GAME STATE
                 }
             }
-
-            //timer1.Stop();
-
-            // TODO : CALL MAIN MOVE FUNCTION
-            // UpdateGameState()
-
         }
 
         public void HandleLuck()
@@ -249,7 +267,7 @@ namespace MonoForms.FormObjects
 
             MessageBox.Show($"{luck.name}\n{luck.text}");
 
-            if (luck.type.ToString() != "GetMoney" && luck.type.ToString() != "LoseMoney")
+            if (luck.type.ToString() == "GetMoney" || luck.type.ToString() == "LoseMoney")
                 Globals.Players[turn].money += luck.price;
             else if (luck.type.ToString() != "EscapePrison")
                 Globals.Players[turn].hasEscapeFromJailCard = true;
@@ -276,15 +294,11 @@ namespace MonoForms.FormObjects
             Globals.Players[turn].jailCounter = 3;
 
             Jail jailForm = new Jail(this);
-            jailForm.TopLevel = false;
-            jailForm.Size = new Size(400, 300);
-            this.Controls.Add(jailForm);
             jailForm.Show();
         }
 
         public void EndRound()
         {
-            turn += 1;
             while (true)
             {
                 if (Globals.Players[turn].isBankrupt)
@@ -355,6 +369,8 @@ namespace MonoForms.FormObjects
             bool currentPlayerLost = false;
 
 
+            Console.WriteLine("CURRENT POS IN UPDATE GAME STATE {0}", currentPosition);
+
             if (p_doNothing.Contains(currentPosition)) //if 0, 10, 20 do nothing, baş,ziyaret,park
             {
                 SonrakiTuraGecilebilir = true;
@@ -362,6 +378,7 @@ namespace MonoForms.FormObjects
             }
             else if (p_jail.Contains(currentPosition)) // if 30 kodes
             {
+                Console.WriteLine("WENT TO JAIL");
                 // same as goto jail
                 HandleGoToJail();
                 EndRound();
@@ -404,9 +421,7 @@ namespace MonoForms.FormObjects
             }
             else // satın alınabilir değerler
             {
-                Console.WriteLine(Globals.Properties.Length);
-
-                Property currentProperty = Globals.Properties[currentPosition];
+                //Property currentProperty = Globals.Properties[currentPosition];
 
                 // owned by current
                 if (Globals.Players[turn].ownedProperties[currentPosition])
@@ -460,12 +475,8 @@ namespace MonoForms.FormObjects
         {
             Luck luck = new Luck();
 
-            luck = Globals.LuckQueue.Peek();
-            if(luck.text == "Get Out of Jail Free")
-            {
-                //Burada jail free card mı değil mi kontrol ediliyor.
-            }
-            Globals.LuckQueue.Dequeue();
+            luck = Globals.LuckQueue.Dequeue();
+            Globals.LuckQueue.Enqueue(luck);
 
             return luck;
         }
@@ -474,8 +485,8 @@ namespace MonoForms.FormObjects
         {
             Community community = new Community();
 
-            community = Globals.CommunityQueue.Peek();
-            Globals.CommunityQueue.Dequeue();
+            community = Globals.CommunityQueue.Dequeue();
+            Globals.CommunityQueue.Enqueue(community);
 
             return community;
         }

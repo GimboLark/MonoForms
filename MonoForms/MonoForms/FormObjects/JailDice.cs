@@ -5,7 +5,7 @@ using MonoForms.Utils;
 
 namespace MonoForms.FormObjects
 {
-    public class Dice : Control
+    public class JailDice : Control
     {
         public GameController parentController;
 
@@ -20,7 +20,7 @@ namespace MonoForms.FormObjects
 
         public Random random;
 
-        public Dice(GameController controller)
+        public JailDice(GameController controller)
         {
             parentController = controller;
             random = new Random();
@@ -28,14 +28,14 @@ namespace MonoForms.FormObjects
             // Roll button
             rollButton = new Button();
             rollButton.Text = "Roll Dice";
-            rollButton.Bounds = new Rectangle(10, 10, 90, 25);
+            rollButton.Bounds = new Rectangle(0, 0, 90, 25);
             rollButton.Click += new EventHandler(RollDice_Click);
 
             // Result labels
             pb1 = new PictureBox();
             pb1.BackgroundImage = Image.FromFile($"../../Assets/Die/die1.jpg");
             pb1.BackgroundImageLayout = ImageLayout.Stretch;
-            pb1.Bounds = new Rectangle(10, 40, 40, 40); 
+            pb1.Bounds = new Rectangle(10, 40, 40, 40);
 
             pb2 = new PictureBox();
             pb2.BackgroundImage = Image.FromFile($"../../Assets/Die/die1.jpg");
@@ -66,12 +66,22 @@ namespace MonoForms.FormObjects
             Globals.Players[parentController.turn].NewRoll((result1, result2));
 
             //Console.WriteLine("ZAR SONUCU:  {0}",totalRollResult);
+            if (result1 == result2)
+            {
+                MessageBox.Show("Aynı geldi");
+                Globals.Players[parentController.turn].IN_JAIL = false;
+                parentController.UpdatePlayerPosition(result1 + result2);
+                parentController.SonrakiTuraGecilebilir = true;
+            }
+            else
+            {
+                parentController.SonrakiTuraGecilebilir = true;
+                Globals.Players[parentController.turn].jailCounter -= 1;
+                if (Globals.Players[parentController.turn].jailCounter == 0)
+                    Globals.Players[parentController.turn].IN_JAIL = false;
+            }
 
-            totalRollResult = 30;
-
-            parentController.timer1.Start();
-            if (!Globals.Players[parentController.turn].IN_JAIL)
-                parentController.UpdatePlayerPosition(totalRollResult);
+            // JAIL EVENT
 
             // zar sonucuna göre güncellemek için gameController update fonk çağrılır
         }

@@ -9,6 +9,10 @@ namespace MonoForms.Utils
 {
     public static class Globals
     {
+        public const bool DEBUG = true;
+
+        public const int TIMER_TICK_LENGHT = 50; // DEFAULT 500
+
         public const int APP_WIDTH = 1280;
         public const int APP_HEIGHT = 720;
 
@@ -23,7 +27,10 @@ namespace MonoForms.Utils
         public static int PASS_MONEY_GAIN = 200;
         public static int TAX_DIFFICULTY = 1;
 
-        
+        public static int JAIL_PRICE = (int) (PASS_MONEY_GAIN * 1.25 * TAX_DIFFICULTY);
+
+
+
 
         public static readonly (int, int)[] positions = new (int, int)[]
         {

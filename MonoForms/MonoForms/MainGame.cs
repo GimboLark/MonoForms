@@ -29,17 +29,6 @@ namespace MonoForms
             gc = new GameController();
             gc.Bounds = new Rectangle(0, 0, Globals.APP_WIDTH, Globals.APP_HEIGHT);
             this.Controls.Add(gc);
-            gc.closeGame.Click += new EventHandler(closeGameEvent);
-        }
-
-        private void closeGameEvent(object sender, EventArgs e)
-        {
-            // Form2'yi aç
-            Form1 form2 = new Form1();
-            form2.Show();
-
-            // Form1'i gizle
-            this.Hide();
         }
     }
 }
