@@ -74,7 +74,8 @@ namespace MonoForms.FormObjects
                 MessageBox.Show("Aynı geldi");
                 Console.WriteLine("AYNI GELDİ");
                 Globals.Players[parentController.turn].IN_JAIL = false;
-                parentController.UpdatePlayerPosition(result1 + result2, true, this.FindForm() as Jail);
+                Form form = this.FindForm() as Jail;
+                parentController.UpdatePlayerPosition(result1 + result2, true, form);
                 parentController.SonrakiTuraGecilebilir = true;
             }
             else

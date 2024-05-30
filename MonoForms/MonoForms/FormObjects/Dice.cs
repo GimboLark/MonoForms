@@ -50,6 +50,7 @@ namespace MonoForms.FormObjects
         public void RollDice_Click(object sender, EventArgs e)
         {
             rollButton.Enabled = false;
+            rollButton.BackColor = Color.Gray;
 
             isRollButtonClicked = true;
             result1 = random.Next(1, 7); // 1 to 6
@@ -74,7 +75,7 @@ namespace MonoForms.FormObjects
             // DEBUG JAIL
             // totalRollResult = 30;
 
-            totalRollResult = 25;
+            //totalRollResult = 30;
 
             parentController.timer1.Start();
             if (!Globals.Players[parentController.turn].IN_JAIL)

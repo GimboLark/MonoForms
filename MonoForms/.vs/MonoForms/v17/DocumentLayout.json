@@ -3,67 +3,83 @@
   "WorkspaceRootPath": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\formobjects\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\buymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\buymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\buymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\buymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\formobjects\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\formobjects\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\buymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\buymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\data\\luck.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\data\\luck.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\utils\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\utils\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\data\\property.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\data\\property.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\utils\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\utils\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\data\\community.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\data\\community.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\data\\community.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\buymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\buymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\formobjects\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\formobjects\\playerscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\playerscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\formobjects\\playerscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\playerscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\jail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\jail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\jail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\jail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\formobjects\\jaildice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\jaildice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\data\\property.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\data\\property.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\data\\luck.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\data\\luck.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\utils\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\utils\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\formobjects\\buymenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\buymenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\formobjects\\buymenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\formobjects\\buymenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\buymenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\gamesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\gamesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\gamesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\gamesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\gamesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\gamesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -71,27 +87,11 @@
       "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\gamesettingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\formobjects\\gamesettingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\formobjects\\gamesettingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\gamesettingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\formobjects\\jaildice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\jaildice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\formobjects\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\formobjects\\jaildice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\formobjects\\jaildice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\jail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\jail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|c:\\users\\gimbo\\desktop\\code\\projects\\monoforms\\monoforms\\monoforms\\utils\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\monoforms\\utils\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C433E268-8478-4DF0-869D-F47EA80B1132}|MonoForms\\MonoForms.csproj|solutionrelative:monoforms\\utils\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -102,84 +102,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Luck.json",
-              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Data\\Luck.json",
-              "RelativeDocumentMoniker": "MonoForms\\Data\\Luck.json",
-              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Data\\Luck.json",
-              "RelativeToolTip": "MonoForms\\Data\\Luck.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAALAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-05-29T20:59:44.041Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GameController.cs",
-              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\GameController.cs",
-              "RelativeDocumentMoniker": "MonoForms\\FormObjects\\GameController.cs",
-              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\GameController.cs",
-              "RelativeToolTip": "MonoForms\\FormObjects\\GameController.cs",
-              "ViewState": "AQIAAO8AAAAAAAAAAAAlwBYBAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "OverriddenGroupName": "MonoForms\\FormObjects",
-              "WhenOpened": "2024-05-29T19:07:10.682Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BuyMenu.cs",
-              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\BuyMenu.cs",
-              "RelativeDocumentMoniker": "MonoForms\\BuyMenu.cs",
-              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\BuyMenu.cs",
-              "RelativeToolTip": "MonoForms\\BuyMenu.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAADwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "OverriddenGroupName": "MonoForms",
-              "WhenOpened": "2024-05-29T19:07:10.679Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Form1.cs",
-              "RelativeDocumentMoniker": "MonoForms\\Form1.cs",
-              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Form1.cs",
-              "RelativeToolTip": "MonoForms\\Form1.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAACYAAAArAAAA",
+              "Title": "Jail.cs",
+              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Jail.cs",
+              "RelativeDocumentMoniker": "MonoForms\\Jail.cs",
+              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Jail.cs",
+              "RelativeToolTip": "MonoForms\\Jail.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAhwDcAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T20:36:27.129Z",
+              "WhenOpened": "2024-05-29T19:07:10.475Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Property.json",
-              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Data\\Property.json",
-              "RelativeDocumentMoniker": "MonoForms\\Data\\Property.json",
-              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Data\\Property.json",
-              "RelativeToolTip": "MonoForms\\Data\\Property.json",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAACEAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-05-29T19:50:05.332Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Dice.cs",
               "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\Dice.cs",
               "RelativeDocumentMoniker": "MonoForms\\FormObjects\\Dice.cs",
               "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\Dice.cs",
               "RelativeToolTip": "MonoForms\\FormObjects\\Dice.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAAAEcAAAAAAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAFcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-29T19:25:12.829Z",
               "EditorCaption": ""
@@ -187,18 +133,33 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GameController.cs [Design]",
+              "Title": "GameController.cs",
               "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\GameController.cs",
               "RelativeDocumentMoniker": "MonoForms\\FormObjects\\GameController.cs",
-              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\GameController.cs [Design]",
-              "RelativeToolTip": "MonoForms\\FormObjects\\GameController.cs [Design]",
+              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\GameController.cs",
+              "RelativeToolTip": "MonoForms\\FormObjects\\GameController.cs",
+              "ViewState": "AQIAAAcCAAAAAAAAAAAAABACAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T20:21:16.262Z",
-              "EditorCaption": " [Design]"
+              "OverriddenGroupName": "MonoForms\\FormObjects",
+              "WhenOpened": "2024-05-29T19:07:10.682Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
+              "Title": "PlayerScreen.cs",
+              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\PlayerScreen.cs",
+              "RelativeDocumentMoniker": "MonoForms\\FormObjects\\PlayerScreen.cs",
+              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\PlayerScreen.cs",
+              "RelativeToolTip": "MonoForms\\FormObjects\\PlayerScreen.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T10:18:28.458Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "Card.cs",
               "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Utils\\Card.cs",
               "RelativeDocumentMoniker": "MonoForms\\Utils\\Card.cs",
@@ -206,12 +167,75 @@
               "RelativeToolTip": "MonoForms\\Utils\\Card.cs",
               "ViewState": "AQIAAEcAAAAAAAAAAAAhwF4AAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T20:37:03.883Z",
+              "WhenOpened": "2024-05-29T20:37:03.883Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PlayerScreen.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\PlayerScreen.cs",
+              "RelativeDocumentMoniker": "MonoForms\\FormObjects\\PlayerScreen.cs",
+              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\PlayerScreen.cs [Design]",
+              "RelativeToolTip": "MonoForms\\FormObjects\\PlayerScreen.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T10:18:27.496Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Property.json",
+              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Data\\Property.json",
+              "RelativeDocumentMoniker": "MonoForms\\Data\\Property.json",
+              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Data\\Property.json",
+              "RelativeToolTip": "MonoForms\\Data\\Property.json",
+              "ViewState": "AQIAAMUAAAAAAAAAAAAuwN0AAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-29T19:50:05.332Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "BuyMenu.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\BuyMenu.cs",
+              "RelativeDocumentMoniker": "MonoForms\\BuyMenu.cs",
+              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\BuyMenu.cs [Design]",
+              "RelativeToolTip": "MonoForms\\BuyMenu.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T20:44:02.728Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BuyMenu.cs",
+              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\BuyMenu.cs",
+              "RelativeDocumentMoniker": "MonoForms\\BuyMenu.cs",
+              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\BuyMenu.cs",
+              "RelativeToolTip": "MonoForms\\BuyMenu.cs",
+              "ViewState": "AQIAAGUAAAAAAAAAAAAhwHAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "OverriddenGroupName": "MonoForms",
+              "WhenOpened": "2024-05-29T19:07:10.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Community.json",
+              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Data\\Community.json",
+              "RelativeDocumentMoniker": "MonoForms\\Data\\Community.json",
+              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Data\\Community.json",
+              "RelativeToolTip": "MonoForms\\Data\\Community.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-29T21:00:10.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Globals.cs",
               "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Utils\\Globals.cs",
               "RelativeDocumentMoniker": "MonoForms\\Utils\\Globals.cs",
@@ -225,19 +249,56 @@
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "Community.json",
-              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Data\\Community.json",
-              "RelativeDocumentMoniker": "MonoForms\\Data\\Community.json",
-              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Data\\Community.json",
-              "RelativeToolTip": "MonoForms\\Data\\Community.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-05-29T21:00:10.413Z",
+              "Title": "Jail.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Jail.cs",
+              "RelativeDocumentMoniker": "MonoForms\\Jail.cs",
+              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Jail.cs [Design]",
+              "RelativeToolTip": "MonoForms\\Jail.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T09:46:16.225Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "JailDice.cs",
+              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\JailDice.cs",
+              "RelativeDocumentMoniker": "MonoForms\\FormObjects\\JailDice.cs",
+              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\JailDice.cs",
+              "RelativeToolTip": "MonoForms\\FormObjects\\JailDice.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAAADsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T19:07:10.18Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Form1.cs",
+              "RelativeDocumentMoniker": "MonoForms\\Form1.cs",
+              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Form1.cs",
+              "RelativeToolTip": "MonoForms\\Form1.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACYAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T20:36:27.129Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Luck.json",
+              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Data\\Luck.json",
+              "RelativeDocumentMoniker": "MonoForms\\Data\\Luck.json",
+              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Data\\Luck.json",
+              "RelativeToolTip": "MonoForms\\Data\\Luck.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-29T20:59:44.041Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "BuyMenuController.cs",
               "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\BuyMenuController.cs",
               "RelativeDocumentMoniker": "MonoForms\\FormObjects\\BuyMenuController.cs",
@@ -245,24 +306,22 @@
               "RelativeToolTip": "MonoForms\\FormObjects\\BuyMenuController.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAABoAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T19:07:10.68Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T19:07:10.68Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "GameSettings.cs [Design]",
               "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\GameSettings.cs",
               "RelativeDocumentMoniker": "MonoForms\\GameSettings.cs",
               "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\GameSettings.cs [Design]",
               "RelativeToolTip": "MonoForms\\GameSettings.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T20:16:01.901Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-05-29T20:16:01.901Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "GameSettings.cs",
               "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\GameSettings.cs",
               "RelativeDocumentMoniker": "MonoForms\\GameSettings.cs",
@@ -270,60 +329,44 @@
               "RelativeToolTip": "MonoForms\\GameSettings.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAhwCQAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T20:16:04.111Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T20:16:04.111Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "BuyMenu.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\BuyMenu.cs",
-              "RelativeDocumentMoniker": "MonoForms\\BuyMenu.cs",
-              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\BuyMenu.cs [Design]",
-              "RelativeToolTip": "MonoForms\\BuyMenu.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T20:44:02.728Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "BuyMenuController.cs [Design]",
               "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\BuyMenuController.cs",
               "RelativeDocumentMoniker": "MonoForms\\FormObjects\\BuyMenuController.cs",
               "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\BuyMenuController.cs [Design]",
               "RelativeToolTip": "MonoForms\\FormObjects\\BuyMenuController.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T20:44:25.684Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-05-29T20:44:25.684Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Form1.cs",
               "RelativeDocumentMoniker": "MonoForms\\Form1.cs",
               "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Form1.cs [Design]",
               "RelativeToolTip": "MonoForms\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T20:36:24.276Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-05-29T20:36:24.276Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "GameSettingsController.cs [Design]",
               "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\GameSettingsController.cs",
               "RelativeDocumentMoniker": "MonoForms\\FormObjects\\GameSettingsController.cs",
               "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\GameSettingsController.cs [Design]",
               "RelativeToolTip": "MonoForms\\FormObjects\\GameSettingsController.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T20:16:37.464Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-05-29T20:16:37.464Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "GameSettingsController.cs",
               "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\GameSettingsController.cs",
               "RelativeDocumentMoniker": "MonoForms\\FormObjects\\GameSettingsController.cs",
@@ -331,58 +374,7 @@
               "RelativeToolTip": "MonoForms\\FormObjects\\GameSettingsController.cs",
               "ViewState": "AQIAAN0AAAAAAAAAAAAAwO4AAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T19:07:10.678Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Jail.cs",
-              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Jail.cs",
-              "RelativeDocumentMoniker": "MonoForms\\Jail.cs",
-              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\Jail.cs",
-              "RelativeToolTip": "MonoForms\\Jail.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAlwCAAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T19:07:10.475Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "JailDice.cs",
-              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\JailDice.cs",
-              "RelativeDocumentMoniker": "MonoForms\\FormObjects\\JailDice.cs",
-              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\JailDice.cs",
-              "RelativeToolTip": "MonoForms\\FormObjects\\JailDice.cs",
-              "ViewState": "AQIAADcAAAAAAAAAAAAlwEkAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T19:07:10.18Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "JailDice.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\JailDice.cs",
-              "RelativeDocumentMoniker": "MonoForms\\FormObjects\\JailDice.cs",
-              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\JailDice.cs [Design]",
-              "RelativeToolTip": "MonoForms\\FormObjects\\JailDice.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T20:23:04.618Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Dice.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\Dice.cs",
-              "RelativeDocumentMoniker": "MonoForms\\FormObjects\\Dice.cs",
-              "ToolTip": "C:\\Users\\gimbo\\Desktop\\code\\projects\\MonoForms\\MonoForms\\MonoForms\\FormObjects\\Dice.cs [Design]",
-              "RelativeToolTip": "MonoForms\\FormObjects\\Dice.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T20:30:56.763Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-05-29T19:07:10.678Z"
             },
             {
               "$type": "Document",
@@ -394,8 +386,7 @@
               "RelativeToolTip": "MonoForms\\Utils\\Player.cs",
               "ViewState": "AQIAACoAAAAAAAAAAAAAAEUAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T19:08:33.846Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T19:08:33.846Z"
             }
           ]
         }

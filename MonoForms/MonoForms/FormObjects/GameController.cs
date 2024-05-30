@@ -247,6 +247,8 @@ namespace MonoForms.FormObjects
                 dice.rollButton.BackColor = Color.Green;
             }
 
+            // UPDATE PLAYERSCREEN
+            playerScreen.Update();
         }
 
         private void BuyProperty_Click(object sender, EventArgs e)
@@ -364,6 +366,7 @@ namespace MonoForms.FormObjects
         {
 
             Console.WriteLine("NEXT ROUND ENABLED");
+            nextRound.BackColor = Color.Green;
             nextRound.Enabled = true;
 
         }
@@ -444,13 +447,17 @@ namespace MonoForms.FormObjects
                 SonrakiTuraGecilebilir = true;
                 EndRound();
             }
-            else if (p_jail.Contains(currentPosition) && Globals.Players[turn].IN_JAIL) // if 30 kodes
+            else if (p_jail.Contains(currentPosition)) // if 30 kodes
             {
-                Console.WriteLine(" IN JAIL");
-                // same as goto jail
-                HandleJail();
-                EndRound();
-                return;
+                if (Globals.Players[turn].IN_JAIL)
+                {
+                    Console.WriteLine(" IN JAIL");
+                    // same as goto jail
+                    HandleJail();
+                    EndRound();
+                    return;
+                }
+                
             }
             else if (p_gotojail.Contains(currentPosition)) // if 30 kodes
             {
@@ -507,7 +514,8 @@ namespace MonoForms.FormObjects
                 if (Globals.Players[turn].ownedProperties[currentPosition])
                 {
                     bool upgradable = false;
-                    //checks upgradability
+                    // TODO: checks upgradability
+
 
                     if(upgradable)
                     {
@@ -521,20 +529,36 @@ namespace MonoForms.FormObjects
                 else
                 {
 
-                    bool somebodyOwns = false;
+                    int owner = propertyOwners[currentPosition];
 
-                    for(int i = 0; i < Globals.PlayerCount; i++)
-                        if (i != turn)
-                            if (Globals.Players[i].ownedProperties[currentPosition])
-                                somebodyOwns = true;
-
-                    if(somebodyOwns) 
+                    if(owner != -1) // somebody owns and owner is owner
                     {
+                        int payment = Globals.Properties[currentPosition].rent[0];
+
+                        Console.WriteLine("NEED TO PAY RENT ON {0} TO {1} FOR {2}",currentPosition, owner, payment);
                         // open pay menu
+
+
+
+                        if(Globals.Players[turn].money >= payment)
+                        {
+                            string mssg = string.Format("You Paid {0} to {1}", payment.ToString(), Globals.Players[owner].name);
+                            MessageBox.Show(mssg);
+                            Globals.Players[owner].money += payment;
+                            Globals.Players[turn].money -= payment;
+                            playerScreen.Update(turn);
+                            playerScreen.Update(owner);
+                        }
+                        else
+                        {
+                            currentPlayerLost = HandleMoney();
+                        }
+
                     }
                     else // not owned
                     {
-                        // open buy menu
+                        BuyMenu buyMenu = new BuyMenu(this);
+                        buyMenu.Show();
                     }
                 }
             }

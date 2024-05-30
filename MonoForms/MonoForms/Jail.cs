@@ -64,32 +64,32 @@ namespace MonoForms
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            JailDice dice = new JailDice(Controller);
-            if (dice.isRollButtonClicked) 
-            { 
-                Globals.Players[Controller.turn].IN_JAIL = false;
-                Globals.Players[Controller.turn].money -= Globals.JAIL_PRICE;
-                Globals.Players[Controller.turn].jailCounter = 0;
-                Controller.UpdatePlayerPosition(dice.result1+dice.result2);
-                Controller.SonrakiTuraGecilebilir = true;
-            }
+            Globals.Players[Controller.turn].IN_JAIL = false;
+            Globals.Players[Controller.turn].money -= Globals.JAIL_PRICE;
+            Globals.Players[Controller.turn].jailCounter = 0;
+            Controller.SonrakiTuraGecilebilir = true;
+            
+            // bi önceki turne verme denemesi
+            Controller.turn = (Controller.turn - 1) % Globals.PlayerCount;
+            
+
             Jail jail = this.FindForm() as Jail;
-            jail?.Close();
+            jail.Close();
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            JailDice dice = new JailDice(Controller); 
-            if (dice.isRollButtonClicked)
-            {
-                Globals.Players[Controller.turn].IN_JAIL = false;
-                Globals.Players[Controller.turn].hasEscapeFromJailCard = false;
-                Globals.Players[Controller.turn].jailCounter = 0;
-                Controller.UpdatePlayerPosition(dice.result1 + dice.result2);
-                Controller.SonrakiTuraGecilebilir = true;
-            }
+            Globals.Players[Controller.turn].IN_JAIL = false;
+            Globals.Players[Controller.turn].money -= Globals.JAIL_PRICE;
+            Globals.Players[Controller.turn].jailCounter = 0;
+            Controller.SonrakiTuraGecilebilir = true;
+
+            // bi önceki turne verme denemesi
+            Controller.turn = (Controller.turn - 1) % Globals.PlayerCount;
+
+
             Jail jail = this.FindForm() as Jail;
-            jail?.Close();
+            jail.Close();
         }
     }
 }

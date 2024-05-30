@@ -111,7 +111,7 @@ namespace MonoForms
         private void BuyButton_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show("Buy button clicked!");
+            MessageBox.Show("You Bought");
             Globals.Players[gc.turn].money -= cityData.price;
             gc.playerScreen.Update(gc.turn);
 
@@ -124,11 +124,18 @@ namespace MonoForms
                 }
                 Console.WriteLine();
             }
+
+            Form form = FindForm() as Form;
+            form.Close();
+
         }
 
         private void SkipButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Skip button clicked!");
+            MessageBox.Show("Skipped");
+
+            Form form = FindForm() as Form;
+            form.Close();
         }
     }
 }
