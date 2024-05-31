@@ -72,7 +72,6 @@ namespace MonoForms.FormObjects
             if (result1 == result2)
             {
                 MessageBox.Show("Aynı geldi");
-                Console.WriteLine("AYNI GELDİ");
                 Globals.Players[parentController.turn].IN_JAIL = false;
                 Form form = this.FindForm() as Jail;
                 parentController.UpdatePlayerPosition(result1 + result2, true, form);
@@ -80,12 +79,15 @@ namespace MonoForms.FormObjects
             }
             else
             {
+                MessageBox.Show("Farklı geldi");
                 parentController.SonrakiTuraGecilebilir = true;
                 Globals.Players[parentController.turn].jailCounter -= 1;
                 if (Globals.Players[parentController.turn].jailCounter == 0)
                     Globals.Players[parentController.turn].IN_JAIL = false;
-            }
 
+                Jail jail = this.FindForm() as Jail;
+                jail?.Close();
+            }
         }
     }
 }

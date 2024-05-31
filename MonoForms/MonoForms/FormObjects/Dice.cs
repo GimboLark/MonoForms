@@ -7,6 +7,9 @@ namespace MonoForms.FormObjects
 {
     public class Dice : Control
     {
+        public int debug_upgrademenu = 0;
+        public int debug_upgrademenu2 = 0;
+
         public GameController parentController;
 
         public int result1;
@@ -35,7 +38,7 @@ namespace MonoForms.FormObjects
             pb1 = new PictureBox();
             pb1.BackgroundImage = Image.FromFile($"../../Assets/Die/die1.jpg");
             pb1.BackgroundImageLayout = ImageLayout.Stretch;
-            pb1.Bounds = new Rectangle(10, 40, 40, 40); 
+            pb1.Bounds = new Rectangle(10, 40, 40, 40);
 
             pb2 = new PictureBox();
             pb2.BackgroundImage = Image.FromFile($"../../Assets/Die/die1.jpg");
@@ -73,10 +76,26 @@ namespace MonoForms.FormObjects
 
 
             // DEBUG JAIL
-            // totalRollResult = 30;
-
             //totalRollResult = 30;
+            if (Globals.DEBUG_JAIL)
+            {
+                Globals.Players[1].hasEscapeFromJailCard = true;
+                totalRollResult = 30;
+            }
 
+            if (Globals.DEBUG_UPGRADE_MENU)
+            {
+                int[] arra = new int[] { 1, 2, 37, 1, 1, 1 };
+
+                if (parentController.turn == 0)
+                {
+                    totalRollResult = arra[debug_upgrademenu++];
+                }
+                else if (parentController.turn == 1)
+                {
+                    totalRollResult = arra[debug_upgrademenu2++];
+                }
+            }
             parentController.timer1.Start();
             if (!Globals.Players[parentController.turn].IN_JAIL)
                 parentController.UpdatePlayerPosition(totalRollResult);

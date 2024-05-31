@@ -9,7 +9,10 @@ namespace MonoForms.Utils
 {
     public static class Globals
     {
-        public const bool DEBUG = true;
+        public const bool DEBUG = false;
+        public const bool DEBUG_JAIL = true;
+        public const bool DEBUG_UPGRADE_MENU = false;
+        public const bool DEBUG_UPGRADE_MENU_WITH_2 = false;
 
         public const int TIMER_TICK_LENGHT = 50; // DEFAULT 500
 
@@ -19,15 +22,15 @@ namespace MonoForms.Utils
         public const int SETTINGS_WIDTH = 1280;
         public const int SETTINGS_HEIGHT = 720;
 
-        public const string PROPERTY_PATH = "../../Data/Property.json";
-        public const string LUCK_PATH = "../../Data/Luck.json";
-        public const string COMMUNITY_PATH = "../../Data/Community.json";
+        public const string PROPERTY_PATH = "../../Assets/Data/Property.json";
+        public const string LUCK_PATH = "../../Assets/Data/Luck.json";
+        public const string COMMUNITY_PATH = "../../Assets/Data/Community.json";
 
         public static int STARTING_MONEY = 1500; // DEFAULT 1500
         public static int PASS_MONEY_GAIN = 200;
         public static int TAX_DIFFICULTY = 1;
 
-        public static int JAIL_PRICE = (int) (PASS_MONEY_GAIN * 1.25 * TAX_DIFFICULTY);
+        public static int JAIL_PRICE = (int)(PASS_MONEY_GAIN * 1.25 * TAX_DIFFICULTY);
 
 
 
@@ -125,6 +128,11 @@ namespace MonoForms.Utils
 
         public static void Init()
         {
+            if (DEBUG)
+                Console.WriteLine("DEBUG ENABLED");
+            if (DEBUG_JAIL)
+                Console.WriteLine("DEBUG_JAIL ENABLED");
+
             Console.WriteLine("GLOBALS INITILIZED");
 
             PropertyCards pc = PropertyCards.FromJsonFile(PROPERTY_PATH);
@@ -151,17 +159,14 @@ namespace MonoForms.Utils
             Properties = new Property[40];
 
             // propertyler içine koyulacak tam düzgün
-            for(int i = 0, j = 0; i < 40; i++)
+            for (int i = 0, j = 0; i < 40; i++)
             {
                 if (propertyMapBool[i])
                 {
                     Properties[i] = pc.properties[j++];
                 }
             }
-            
-
         }
-
         public static void SettingsUpdate(int playerCount, Player[] players)
         {
             PlayerCount = playerCount;

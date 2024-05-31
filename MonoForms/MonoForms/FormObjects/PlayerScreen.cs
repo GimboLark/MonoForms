@@ -4,7 +4,10 @@ using MonoForms.Utils;
 
 namespace MonoForms.FormObjects
 {
-    // playerlerin parasının felan gözüktüğü kısım
+    /// <summary>
+    /// Player sayısı kadar playerlerin parasının ve adının gözüktüğü kısım
+    /// Jail durumu ve aktif oyuncuyuda gösterir
+    /// </summary>
     public class PlayerScreen : Control
     {
         public const int WIDTH = 10 + (PlayerScreenPart.WIDTH + 10) * 4;
@@ -43,7 +46,10 @@ namespace MonoForms.FormObjects
         {
             for (int i = 0; i < Globals.PlayerCount; i++)
             {
-                playerScreenParts[i].Update();
+                if(parentController.turn == i)
+                    playerScreenParts[i].Update(true);
+                else
+                    playerScreenParts[i].Update();
             }
         }
 
@@ -52,7 +58,10 @@ namespace MonoForms.FormObjects
         /// </summary>
         public void Update(int playerIndex)
         {
-            playerScreenParts[playerIndex].Update();
+            if (parentController.turn == playerIndex)
+                playerScreenParts[playerIndex].Update(true);
+            else
+                playerScreenParts[playerIndex].Update();
         }
     }
 
@@ -68,18 +77,22 @@ namespace MonoForms.FormObjects
         public Player player;
         public PlayerScreen parent;
 
-
         public Label nameLabel;
         public Label moneyLabel;
 
+        public PictureBox jailBars;
+
         public PlayerScreenPart(Player player, PlayerScreen parent)
         {
+            // should be uptop 
+            
             this.player = player;
             this.parent = parent;
 
             // name label init
             nameLabel = new Label();
             nameLabel.Text = player.name;
+            nameLabel.BackColor = Color.Transparent;
             nameLabel.TextAlign = ContentAlignment.MiddleCenter;
 
             nameLabel.Font = new Font(nameLabel.Font.FontFamily, 12f, FontStyle.Bold);
@@ -91,6 +104,7 @@ namespace MonoForms.FormObjects
 
             // money label init
             moneyLabel = new Label();
+            moneyLabel.BackColor = Color.Transparent;
             moneyLabel.Font = new Font(moneyLabel.Font.FontFamily, 16f, moneyLabel.Font.Style);
             moneyLabel.TextAlign = ContentAlignment.MiddleCenter;
 
@@ -100,6 +114,16 @@ namespace MonoForms.FormObjects
 
             this.Controls.Add(moneyLabel);
 
+
+            jailBars = new PictureBox();
+            jailBars.BackColor = Color.Transparent;
+            jailBars.Bounds = new Rectangle(0, 0, WIDTH, HEIGHT);
+            jailBars.Image = Image.FromFile($"../../Assets/bars.png");
+            jailBars.BackgroundImageLayout = ImageLayout.Stretch;
+            jailBars.Hide();
+            this.Controls.Add(jailBars);
+
+
             // set color
             if (player.turn == 0)
                 this.BackColor = Color.OrangeRed;
@@ -108,14 +132,44 @@ namespace MonoForms.FormObjects
             if (player.turn == 2)
                 this.BackColor = Color.LightGoldenrodYellow;
             if (player.turn == 3)
-                this.BackColor = Color.DarkOliveGreen;
+                this.BackColor = Color.GreenYellow;
 
         }
 
-        public void Update()
+        public void Update(bool IsTurnPlayer = false)
         {
             string moneystr = string.Format("{0} $", player.money.ToString());
             moneyLabel.Text = moneystr;
+
+            // if in jail show this
+            if(player.IN_JAIL)
+                jailBars.Show();
+            else
+                jailBars.Hide();
+
+           if(IsTurnPlayer)
+           {
+                if (player.turn == 0)
+                    this.BackColor = Color.OrangeRed;
+                if (player.turn == 1)
+                    this.BackColor = Color.CornflowerBlue;
+                if (player.turn == 2)
+                    this.BackColor = Color.LightGoldenrodYellow;
+                if (player.turn == 3)
+                    this.BackColor = Color.GreenYellow;
+           }
+           else
+           {
+                if (player.turn == 0)
+                    this.BackColor = Color.FromArgb(99, 72, 72);
+                if (player.turn == 1)
+                    this.BackColor = Color.FromArgb(72, 78, 99);
+                if (player.turn == 2)
+                    this.BackColor = Color.FromArgb(99, 94, 72);
+                if (player.turn == 3)
+                    this.BackColor = Color.FromArgb(72, 99, 72);
+            }
+
         }
     }
 

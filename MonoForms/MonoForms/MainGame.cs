@@ -19,6 +19,9 @@ namespace MonoForms
 
         private void MainGame_Load(object sender, EventArgs e)
         {
+            this.DoubleBuffered = true; // TEST
+
+
             this.Width = Globals.APP_WIDTH;
             this.Height = Globals.APP_HEIGHT + 40;// + 40 burda yukardaki isim kısmı ve kapatma falan şeylerini dahil ettiği için
 

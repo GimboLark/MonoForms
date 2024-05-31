@@ -45,6 +45,22 @@ namespace MonoForms.Utils
          */
 
         public string name;
+
+        [JsonIgnore]
+        public string nameUpdated
+        {
+            get {
+                string str = name;
+                if (upgradeLevel != 5)
+                    for (int i = 0; i < upgradeLevel - 1; i++)
+                        str += "+";
+                else
+                    str += "*";
+                return str; 
+            }
+        }
+
+
         public string color;
 
 
@@ -62,7 +78,16 @@ namespace MonoForms.Utils
         [JsonIgnore]
         public bool IsBought;
 
-        public int[] rent;
+        [JsonIgnore]
+        public int rent
+        {
+            get
+            {
+                return rents[upgradeLevel];
+            }
+        }
+
+        public int[] rents;
         // BURSA: 40 - 200 - 500 - 1800 - 3200 - 4500
         // Telekom: 40 - 100
         // Metro: 250 - 500 - 1000 - 2000
@@ -72,7 +97,8 @@ namespace MonoForms.Utils
         public int hotel_cost;
 
         [JsonIgnore]
-        public int upgradeLevel;
+        public int upgradeLevel = 0;
+
     }
 
     public class LuckCards
@@ -107,14 +133,16 @@ namespace MonoForms.Utils
 
     public enum LuckType
     {
-        Move,
+        GoToAdvance,
+        GoToJail,
         GetMoney,
         LoseMoney,
         EscapePrison,
     }
     public enum CommunityType
     {
-        Move,
+        GoToAdvance,
+        GoToJail,
         GetMoney,
         LoseMoney,
     }

@@ -2,7 +2,7 @@
   "lucks": [
     {
       "name": "Advance to Go",
-      "type": "Move",
+      "type": "GoToAdvance",
       "price": 0,
       "text": "Advance to Go (Collect $200)"
     },
@@ -26,7 +26,7 @@
     },
     {
       "name": "Go to Jail",
-      "type": "Move",
+      "type": "GoToJail",
       "price": 0,
       "text": "Go directly to Jail. Do not pass Go, do not collect $200"
     },

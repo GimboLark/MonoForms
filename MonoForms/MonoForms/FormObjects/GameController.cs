@@ -5,12 +5,15 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Data;
+using System.Linq;
 
 namespace MonoForms.FormObjects
 {
     // tüm oyunu yürüten game controller objesi
     public class GameController : Control
     {
+        public BuyMenu buyMenu;
         // image for the game board
         public PictureBox gameBoard;
 
@@ -20,8 +23,6 @@ namespace MonoForms.FormObjects
         // sonraki tur butonu
         public Button nextRound;
         public Button closeGame;
-        public Button passProperty;
-        public Button buyProperty;
 
         // kişilerin sırasını tuttsun
         public int turn;
@@ -36,16 +37,17 @@ namespace MonoForms.FormObjects
 
         public Timer timer1;
 
+        public OwnedProperties ops;
 
         public int[] propertyOwners = new int[] {
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
-        }; 
-
+        };
         public GameController()
         {
+            BuyMenu buyMenu = new BuyMenu(this);
 
             // intilize nextRound button
             nextRound = new Button();
@@ -67,17 +69,6 @@ namespace MonoForms.FormObjects
 
             this.Controls.Add(closeGame);
 
-            // intilize buyProperty button
-            buyProperty = new Button();
-            buyProperty.Text = "Buy";
-            buyProperty.Bounds = new Rectangle(Globals.APP_WIDTH - 310, Globals.APP_HEIGHT - 40, 100, 40);
-            buyProperty.ForeColor = Color.White;
-            buyProperty.BackColor = Color.Green;
-            buyProperty.Click += new EventHandler(BuyProperty_Click);
-
-            this.Controls.Add(buyProperty);
-
-
             // intilize gameboard background
             gameBoard = new PictureBox();
             gameBoard.BackgroundImage = Image.FromFile("../../Assets/board.jpg");
@@ -86,18 +77,22 @@ namespace MonoForms.FormObjects
 
             // initlize dice 
             dice = new Dice(this);
-            dice.Bounds = new Rectangle(740, 200, 110, 90);
+            dice.Bounds = new Rectangle(740, Globals.APP_HEIGHT - 100, 110, 90);
             dice.BackColor = Color.Khaki;
 
             this.Controls.Add(dice);
 
+            ops = new OwnedProperties(this);
+            ops.Bounds = new Rectangle(740, 120, OwnedProperties.WIDTH, OwnedProperties.HEIGHT);
+
+            this.Controls.Add(ops);
 
             // SETS PLAYER DATA IF ITS NULL OR WRONGLY SET
             // --------------------------------------------------------------------
             Player player1 = new Player("Player 1", "Ayakkabı", 0);
-            Player player2 = new Player("Player 2", "Gemi",     1);
-            Player player3 = new Player("Player 3", "Rende",    2);
-            Player player4 = new Player("Player 4", "Şapka",    3);
+            Player player2 = new Player("Player 2", "Gemi", 1);
+            Player player3 = new Player("Player 3", "Rende", 2);
+            Player player4 = new Player("Player 4", "Şapka", 3);
 
             Player[] players = new Player[] { player1, player2, player3, player4 };
 
@@ -134,12 +129,13 @@ namespace MonoForms.FormObjects
 
             // init timer
             timer1 = new Timer();
-            timer1.Interval = Globals.TIMER_TICK_LENGHT ; // 1 sn
+            timer1.Interval = Globals.TIMER_TICK_LENGHT; // 1 sn
 
             // init player screen must be init after players set
             playerScreen = new PlayerScreen(this);
             playerScreen.Bounds = new Rectangle(740, 20, PlayerScreen.WIDTH, PlayerScreen.HEIGHT);
             this.Controls.Add(playerScreen);
+            playerScreen.Update();
 
 
             // en altta olması için en son eklenmeli
@@ -149,16 +145,12 @@ namespace MonoForms.FormObjects
 
         private void closeGame_Event(object sender, EventArgs e)
         {
-            // Form2'yi aç
-            Form1 form2 = new Form1();
-            form2.Show();
+            MainGame mainGame = this.FindForm() as MainGame;
+            mainGame?.Close();
 
-            // Form1'i gizle
-            this.Hide();
+            Form1 Form1 = new Form1();
+            Form1.Show();
         }
-
-
-
 
         // pawns değerini günceller
         public void PawnInit()
@@ -201,7 +193,7 @@ namespace MonoForms.FormObjects
                 x = (int)((float)Globals.positions[position].Item1 / 1024 * 720) + Globals.offsets[i].Item1;
                 y = (int)((float)Globals.positions[position].Item2 / 1024 * 720) + Globals.offsets[i].Item2;
 
-                pawns[i].Bounds = new Rectangle(x,y,20,20);
+                pawns[i].Bounds = new Rectangle(x, y, 20, 20);
             }
         }
 
@@ -211,6 +203,16 @@ namespace MonoForms.FormObjects
 
             Console.WriteLine("SIRA {0}", (turn + 1) % Globals.PlayerCount + 1);
             turn = (turn + 1) % Globals.PlayerCount;
+
+            if (Globals.DEBUG)
+            {
+                if (Globals.DEBUG_UPGRADE_MENU && !Globals.DEBUG_UPGRADE_MENU_WITH_2)
+                {
+                    if (turn == 1)
+                        turn = (turn + 3) % Globals.PlayerCount;
+                }
+            }
+
 
             {
                 int bankruptCounter = 0;
@@ -225,7 +227,7 @@ namespace MonoForms.FormObjects
                         break;
                 }
 
-                if ( 1 == Globals.PlayerCount - bankruptCounter )
+                if (1 == Globals.PlayerCount - bankruptCounter)
                 {
                     // END GAME WINNER IS THE Globals.Player[TURN]
                 }
@@ -249,13 +251,6 @@ namespace MonoForms.FormObjects
 
             // UPDATE PLAYERSCREEN
             playerScreen.Update();
-        }
-
-        private void BuyProperty_Click(object sender, EventArgs e)
-        {
-
-            BuyMenu buyMenu = new BuyMenu(this);
-            buyMenu.Show();
         }
 
         public void UpdatePlayerPosition(int rollResult, bool normal = true, Form form = null)
@@ -323,10 +318,17 @@ namespace MonoForms.FormObjects
                 Globals.Players[turn].money += luck.price;
                 playerScreen.Update(turn);
             }
-            else if (luck.type.ToString() != "EscapePrison")
+            else if (luck.type.ToString() == "EscapePrison")
                 Globals.Players[turn].hasEscapeFromJailCard = true;
-            else
-                Globals.Players[turn].position = 10;
+            else if (luck.type.ToString() == "GoToJail")
+            {
+                if (Globals.Players[turn].position > 10)
+                    HandleGoToJail(50 - Globals.Players[turn].position);
+                else
+                    HandleGoToJail(10 - Globals.Players[turn].position);
+            }
+            else if (luck.type.ToString() == "GoToAdvance")
+                HandleGoToAdvance();
         }
 
         public void HandleComm()
@@ -336,13 +338,22 @@ namespace MonoForms.FormObjects
 
             MessageBox.Show($"{comm.name}\n{comm.text}");
 
-            if (comm.type.ToString() != "Move")
+            if (comm.type.ToString() != "GoToJail" && comm.type.ToString() != "GoToAdvance")
             {
                 Globals.Players[turn].money += comm.price;
                 playerScreen.Update(turn);
             }
-            else
-                Globals.Players[turn].position = 10;
+            else if (comm.type.ToString() == "GoToJail")
+            {
+                if (Globals.Players[turn].position > 10)
+                    HandleGoToJail(50 - Globals.Players[turn].position);
+                else
+                    HandleGoToJail(10 - Globals.Players[turn].position);
+            }
+            else if (comm.type.ToString() == "GoToAdvance")
+            {
+                HandleGoToAdvance();
+            }
         }
 
         public void HandleJail()
@@ -351,12 +362,18 @@ namespace MonoForms.FormObjects
             jailForm.Show();
         }
 
-        public void HandleGoToJail()
+        public void HandleGoToJail(int amount)
         {
             Globals.Players[turn].IN_JAIL = true;
             Globals.Players[turn].jailCounter = 3;
             Console.WriteLine("WALKING TO JAIL");
-            UpdatePlayerPosition(20 ,false);
+            UpdatePlayerPosition(amount, false);
+        }
+        public void HandleGoToAdvance()
+        {
+            Console.WriteLine("WALKING TO Advance");
+            Globals.Players[turn].money += Globals.PASS_MONEY_GAIN;
+            UpdatePlayerPosition(40 - Globals.Players[turn].position, false);
         }
 
         /// <summary>
@@ -373,6 +390,8 @@ namespace MonoForms.FormObjects
 
         public bool HandleMoney()
         {
+            HandlePlayerMoney handlePlayerMoney = new HandlePlayerMoney(this);
+            handlePlayerMoney.Show();
             return false;
         }
 
@@ -385,7 +404,6 @@ namespace MonoForms.FormObjects
             if (Globals.Players[turn].money <= 0)
             {
                 Globals.Players[turn].isBankrupt = true;
-
             }
         }
 
@@ -402,13 +420,16 @@ namespace MonoForms.FormObjects
             {
                 Console.WriteLine("HAS 3 CONSECUTIVE ROLLS");
 
-                foreach( (int,int) roll in Globals.Players[turn].rollCache.array)
+                foreach ((int, int) roll in Globals.Players[turn].rollCache.array)
                 {
                     Console.WriteLine("Roll: {0} {1}", roll.Item1, roll.Item2);
                 }
 
+                if (Globals.Players[turn].position > 10)
+                    HandleGoToJail(50 - Globals.Players[turn].position);
+                else
+                    HandleGoToJail(10 - Globals.Players[turn].position);
                 // same as goto jail
-                HandleGoToJail();
                 EndRound();
                 return;
             }
@@ -429,12 +450,12 @@ namespace MonoForms.FormObjects
 
 
             // check current position
-            List<int> p_doNothing = new List<int>   {  0, 20     };
-            List<int> p_jail = new List<int>        { 10         };
-            List<int> p_gotojail = new List<int>    { 30         };
-            List<int> p_tax = new List<int>         {  4, 38     };
-            List<int> p_luck = new List<int>        {  7, 22, 36 };
-            List<int> p_comm = new List<int>        {  2, 17, 33 };
+            List<int> p_doNothing = new List<int> { 0, 20 };
+            List<int> p_jail = new List<int> { 10 };
+            List<int> p_gotojail = new List<int> { 30 };
+            List<int> p_tax = new List<int> { 4, 38 };
+            List<int> p_luck = new List<int> { 7, 22, 36 };
+            List<int> p_comm = new List<int> { 2, 17, 33 };
 
 
             bool currentPlayerLost = false;
@@ -457,24 +478,24 @@ namespace MonoForms.FormObjects
                     EndRound();
                     return;
                 }
-                
+
             }
             else if (p_gotojail.Contains(currentPosition)) // if 30 kodes
             {
                 Console.WriteLine("WENT TO JAIL");
                 // same as goto jail
-                HandleGoToJail();
+                HandleGoToJail(20);
                 EndRound();
                 return;
             }
-            else if(p_tax.Contains(currentPosition)) // if 4 , 38 tax
+            else if (p_tax.Contains(currentPosition)) // if 4 , 38 tax
             {
                 // handle tax
-                if(currentPosition == 4)  // gelir vergisi
-                { 
-                    if(Globals.Players[turn].money - Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN > 0) // yeterli para varsa
+                if (currentPosition == 4)  // gelir vergisi
+                {
+                    if (Globals.Players[turn].money - Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN > 0) // yeterli para varsa
                     {
-                        MessageBox.Show("Gelir Verigisi");
+                        MessageBox.Show("Gelir Verigisi :" + Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN / 2);
                         Globals.Players[turn].money -= Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN;
                         playerScreen.Update(turn);
                     }
@@ -487,7 +508,7 @@ namespace MonoForms.FormObjects
                 {
                     if (Globals.Players[turn].money - Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN / 2 > 0) // yeterli para varsa
                     {
-                        MessageBox.Show("Lüküs Verigisi");
+                        MessageBox.Show("Lüks Verigisi : " + Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN / 2);
                         Globals.Players[turn].money -= Globals.TAX_DIFFICULTY * Globals.PASS_MONEY_GAIN / 2;
                         playerScreen.Update(turn);
                     }
@@ -498,7 +519,7 @@ namespace MonoForms.FormObjects
                 }
 
             }
-            else if(p_luck.Contains(currentPosition))
+            else if (p_luck.Contains(currentPosition))
             {
                 HandleLuck();
             }
@@ -511,19 +532,47 @@ namespace MonoForms.FormObjects
                 //Property currentProperty = Globals.Properties[currentPosition];
 
                 // owned by current
-                if (Globals.Players[turn].ownedProperties[currentPosition])
+                if (propertyOwners[currentPosition] == turn)
                 {
-                    bool upgradable = false;
+                    bool upgradable = true;
+
                     // TODO: checks upgradability
 
+                    Property currentProperty = Globals.Properties[currentPosition];
 
-                    if(upgradable)
+                    string thisColor = currentProperty.color;
+
+
+                    List<int> groupMembers = new List<int>();
+
+                    for (int i = 0; i < 40; i++)
                     {
-                        // upgrade menu
+                        // if color same 
+                        if (Globals.Properties[i] == null || Globals.Properties[i].color == null)
+                            continue;
+
+                        if (Globals.Properties[i].color == thisColor)
+                        {
+                            groupMembers.Add(i);
+
+                            // && we own true
+                            if (propertyOwners[currentPosition] == turn)
+                            {
+                                // upgradable = true;
+                            }
+                            else
+                            {
+                                upgradable = false;
+                            }
+                        }
                     }
-                    else
+
+
+                    if (upgradable)
                     {
-                        // do nothing
+                        // open upgrade menu
+                        UpgradeMenu upgradeMenu = new UpgradeMenu(this, groupMembers);
+                        upgradeMenu.Show();
                     }
                 }
                 else
@@ -531,16 +580,16 @@ namespace MonoForms.FormObjects
 
                     int owner = propertyOwners[currentPosition];
 
-                    if(owner != -1) // somebody owns and owner is owner
+                    if (owner != -1) // somebody owns and owner is owner
                     {
-                        int payment = Globals.Properties[currentPosition].rent[0];
+                        int payment = Globals.Properties[currentPosition].rent;
 
-                        Console.WriteLine("NEED TO PAY RENT ON {0} TO {1} FOR {2}",currentPosition, owner, payment);
+                        Console.WriteLine("NEED TO PAY RENT ON {0} TO {1} FOR {2}", currentPosition, owner, payment);
                         // open pay menu
 
 
 
-                        if(Globals.Players[turn].money >= payment)
+                        if (Globals.Players[turn].money >= payment)
                         {
                             string mssg = string.Format("You Paid {0} to {1}", payment.ToString(), Globals.Players[owner].name);
                             MessageBox.Show(mssg);
@@ -563,7 +612,7 @@ namespace MonoForms.FormObjects
                 }
             }
 
-            if(currentPlayerLost)
+            if (currentPlayerLost)
             {
                 PlayerLostHandle();
             }

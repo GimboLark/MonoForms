@@ -24,7 +24,8 @@ namespace MonoForms
         private Panel colorPanel;
         private Property cityData;
 
-        BuyMenuController controller;
+        public List<string> ownedPropertNames = new List<string>();
+
         GameController gc;
 
         public BuyMenu(GameController gc)
@@ -36,10 +37,6 @@ namespace MonoForms
 
         private void BuyMenu_Load(object sender, EventArgs e)
         {
-            controller = new BuyMenuController();
-            controller.Bounds = new Rectangle(0, 0, Globals.APP_WIDTH/4, Globals.APP_HEIGHT/2);
-            //this.Controls.Add(controller);
-
             this.Text = "City Form";
             this.Size = new Size(400, 300);
 
@@ -54,11 +51,10 @@ namespace MonoForms
             buyButton.Size = new Size(80, 30);
             buyButton.Click += BuyButton_Click;
 
-            if ( Globals.Players[gc.turn].money < cityData.price)
+            if (Globals.Players[gc.turn].money < cityData.price)
             {
                 buyButton.Enabled = false;
             }
-
 
             // Skip Button
             skipButton = new Button();
@@ -111,8 +107,12 @@ namespace MonoForms
         private void BuyButton_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show("You Bought");
+            MessageBox.Show("You Bought : " +cityData.name.ToString());
             Globals.Players[gc.turn].money -= cityData.price;
+
+            gc.ops.AddProperty(gc.turn, Globals.Players[gc.turn].position);
+            gc.ops.Update();
+
             gc.playerScreen.Update(gc.turn);
 
             gc.propertyOwners[Globals.Players[gc.turn].position] = gc.turn;
@@ -127,7 +127,6 @@ namespace MonoForms
 
             Form form = FindForm() as Form;
             form.Close();
-
         }
 
         private void SkipButton_Click(object sender, EventArgs e)

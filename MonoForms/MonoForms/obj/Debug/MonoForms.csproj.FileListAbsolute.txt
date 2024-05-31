@@ -58,3 +58,9 @@ C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\Mon
 C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.csproj.Up2Date
 C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.exe
 C:\Users\gimbo\Desktop\code\projects\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.pdb
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.HandlePlayerMoney.resources
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.UpgradeMenu.resources
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\bin\Debug\MonoForms.exe.manifest
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\bin\Debug\MonoForms.application
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.exe.manifest
+C:\Users\Murat Berk\Documents\GitHub\MonoForms\MonoForms\MonoForms\obj\Debug\MonoForms.application

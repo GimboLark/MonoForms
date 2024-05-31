@@ -35,19 +35,15 @@ namespace MonoForms
             jd.BackColor = Color.Chartreuse;
             this.Controls.Add(jd);
 
-
             // Ödeme Butonunu ayarla
-
-            
 
             PayButton.Text = string.Format("{0}$ Öde",Globals.JAIL_PRICE);
             PayButton.Size = new Size(100, 50); // Buton boyutunu ayarla
-            PayButton.Location = new Point(50, 120); // Buton konumunu ayarla
+            PayButton.Location = new Point(20, 130); // Buton konumunu ayarla
             PayButton.Click += new EventHandler(Button2_Click);
             if (Globals.Players[Controller.turn].money < Globals.JAIL_PRICE)
                 PayButton.Enabled = false;
             this.Controls.Add(PayButton);
-
 
             Console.WriteLine("JAIL_LOAD PLAYER HAS ESCAPE FROM JAIL CARD {0}", Globals.Players[Controller.turn].hasEscapeFromJailCard);
 
@@ -55,7 +51,7 @@ namespace MonoForms
             Button button3 = new Button();
             button3.Text = "Şans Kartını Kullan";
             button3.Size = new Size(100, 50);
-            button3.Location = new Point(50, 190);
+            button3.Location = new Point(20, 190);
             if (!Globals.Players[Controller.turn].hasEscapeFromJailCard)
                 button3.Enabled = false;
             button3.Click += new EventHandler(Button3_Click);
@@ -71,7 +67,6 @@ namespace MonoForms
             
             // bi önceki turne verme denemesi
             Controller.turn = (Controller.turn - 1) % Globals.PlayerCount;
-            
 
             Jail jail = this.FindForm() as Jail;
             jail.Close();
@@ -86,7 +81,6 @@ namespace MonoForms
 
             // bi önceki turne verme denemesi
             Controller.turn = (Controller.turn - 1) % Globals.PlayerCount;
-
 
             Jail jail = this.FindForm() as Jail;
             jail.Close();
